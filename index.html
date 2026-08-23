@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Painel ao Vivo — Trator</title>
+<meta name="theme-color" content="#0B120D">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icon-192.png">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Painel">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B120D;
+  --surface:#121C15;
+  --surface-2:#182419;
+  --line:#243428;
+  --amber:#E8A33D;
+  --amber-dim:#8A6425;
+  --green:#7CB35C;
+  --green-track:#2ECC71;
+  --blue-loc:#3B9EEB;
+  --red:#D96B4F;
+  --text:#F2EDE1;
+  --text-muted:#8FA08F;
+  --mono:'Chakra Petch',monospace;
+  --sans:'Inter',sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:var(--sans);height:100%;overscroll-behavior:none;}
+::selection{background:var(--amber);color:#0B120D;}
+.wrap{max-width:480px;margin:0 auto;padding:16px 16px 32px;}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand-icon{
+  width:34px;height:34px;border-radius:8px;background:linear-gradient(160deg,var(--amber),var(--amber-dim));
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+}
+.brand-name{font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:.03em;}
+.brand-sub{font-size:10px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-top:1px;}
+.status-pill{
+  font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;
+  padding:5px 10px;border-radius:20px;border:1px solid var(--line);color:var(--text-muted);
+  display:flex;align-items:center;gap:6px;
+}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--text-muted);}
+.status-pill.ativo{border-color:var(--green);color:var(--green);}
+.status-pill.ativo .status-dot{background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 1.4s infinite;}
+.status-pill.pausado{border-color:var(--amber);color:var(--amber);}
+.status-pill.pausado .status-dot{background:var(--amber);}
+.status-pill.offline{border-color:var(--red);color:var(--red);}
+.status-pill.offline .status-dot{background:var(--red);}
+@keyframes pulse{0%{opacity:1;}50%{opacity:.35;}100%{opacity:1;}}
+
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px 18px;margin-bottom:14px;
+}
+.job-line{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;}
+.job-name{font-family:var(--mono);font-weight:600;font-size:15px;color:var(--amber);}
+.job-meta{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;}
+
+.readouts{display:flex;}
+.readout{flex:1;padding:6px 4px;text-align:center;}
+.readout.divider-r{border-right:1px solid var(--line);}
+.readout-label{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.09em;margin-bottom:4px;}
+.readout-value{font-family:var(--mono);font-weight:600;font-size:34px;line-height:1;color:var(--text);}
+.readout-value.hero{font-size:44px;color:var(--amber);}
+.readout-unit{font-size:12px;color:var(--text-muted);margin-left:3px;font-weight:400;}
+
+.progress-labels{display:flex;justify-content:space-between;font-size:10.5px;color:var(--text-muted);margin-bottom:6px;}
+.progress-labels b{color:var(--amber);font-weight:600;font-family:var(--mono);}
+.progress-track{height:8px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden;}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--amber-dim),var(--amber));transition:width .4s ease;}
+.progress-wrap{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);}
+
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.stat-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 10px;}
+.stat-card .lbl{font-size:9.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;}
+.stat-card .val{font-family:var(--mono);font-size:15px;font-weight:600;margin-top:4px;color:var(--text);}
+
+#map{height:260px;border-radius:16px;border:1px solid var(--line);background:#0e150f;margin-bottom:14px;}
+
+.update-row{
+  display:flex;align-items:center;justify-content:space-between;background:var(--surface);
+  border:1px solid var(--line);border-radius:14px;padding:11px 14px;font-size:11.5px;color:var(--text-muted);
+}
+.update-row b{color:var(--text);font-family:var(--mono);}
+.sync-note{font-size:11px;color:var(--text-muted);text-align:center;margin-top:14px;line-height:1.5;}
+.sync-note.err{color:var(--red);}
+
+.empty-state{
+  text-align:center;padding:60px 20px;color:var(--text-muted);
+}
+.empty-state .big{font-size:38px;margin-bottom:10px;}
+.empty-state .msg{font-size:14px;line-height:1.5;}
+
+.install-btn{
+  width:100%;display:flex;align-items:center;justify-content:center;gap:8px;
+  background:linear-gradient(160deg,var(--amber),var(--amber-dim));color:#1A1207;
+  border:none;border-radius:14px;padding:13px;margin-bottom:14px;
+  font-family:var(--mono);font-weight:700;font-size:13.5px;letter-spacing:.04em;
+  text-transform:uppercase;cursor:pointer;
+}
+.install-btn:active{opacity:.85;}
+.ios-hint{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:12px 14px;margin-bottom:14px;font-size:12px;line-height:1.5;color:var(--text-muted);
+}
+.ios-hint b{color:var(--text);}
+
+.logout-btn{
+  background:transparent;border:1px solid var(--line);color:var(--text-muted);
+  border-radius:20px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:14px;margin-left:8px;
+}
+.logout-btn:active{opacity:.7;}
+.topbar-right{display:flex;align-items:center;}
+
+/* ---- Autenticação ---- */
+.auth-wrap{
+  max-width:380px;margin:64px auto 0;padding:0 16px;
+}
+.auth-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px 22px;
+}
+.auth-title{font-family:var(--mono);font-weight:700;font-size:19px;margin-bottom:4px;color:var(--text);}
+.auth-sub{font-size:12.5px;color:var(--text-muted);margin-bottom:22px;line-height:1.4;}
+.auth-field{margin-bottom:14px;}
+.auth-field label{display:block;font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;}
+.auth-field input{
+  width:100%;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;
+  padding:12px 13px;color:var(--text);font-size:14.5px;font-family:var(--sans);outline:none;
+}
+.auth-field input:focus{border-color:var(--amber-dim);}
+.auth-btn{
+  width:100%;background:linear-gradient(160deg,var(--amber),var(--amber-dim));color:#1A1207;
+  border:none;border-radius:12px;padding:13px;font-family:var(--mono);font-weight:700;font-size:13.5px;
+  letter-spacing:.04em;text-transform:uppercase;cursor:pointer;margin-top:6px;
+}
+.auth-btn:disabled{opacity:.55;}
+.auth-toggle{
+  text-align:center;margin-top:16px;font-size:12.5px;color:var(--text-muted);
+}
+.auth-toggle button{
+  background:none;border:none;color:var(--amber);font-size:12.5px;cursor:pointer;
+  text-decoration:underline;padding:0;font-family:var(--sans);
+}
+.auth-error{
+  background:rgba(217,107,79,.12);border:1px solid var(--red);color:var(--red);
+  border-radius:10px;padding:9px 12px;font-size:12px;margin-bottom:14px;line-height:1.4;display:none;
+}
+.auth-loading{text-align:center;padding:60px 20px;color:var(--text-muted);font-size:13px;}
+</style>
+</head>
+<body>
+
+<!-- ======================= TELA DE CARREGAMENTO ======================= -->
+<div id="authLoading" class="auth-loading">Verificando sessão…</div>
+
+<!-- ======================= TELA DE LOGIN / CADASTRO ======================= -->
+<div id="authScreen" class="auth-wrap" style="display:none;">
+  <div class="auth-card">
+    <div class="auth-title" id="authTitle">Entrar</div>
+    <div class="auth-sub" id="authSub">Acesse com seu e-mail e senha para acompanhar o trator.</div>
+    <div class="auth-error" id="authError"></div>
+    <form id="authForm">
+      <div class="auth-field">
+        <label>E-mail</label>
+        <input type="email" id="authEmail" autocomplete="email" required>
+      </div>
+      <div class="auth-field">
+        <label>Senha</label>
+        <input type="password" id="authPassword" autocomplete="current-password" required minlength="6">
+      </div>
+      <button type="submit" class="auth-btn" id="authSubmitBtn">Entrar</button>
+    </form>
+    <div class="auth-toggle">
+      <span id="authToggleText">Ainda não tem conta?</span>
+      <button type="button" id="authToggleBtn">Criar conta</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= APP (só aparece autenticado) ======================= -->
+<div class="wrap" id="appWrap" style="display:none;">
+
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-icon">🚜</div>
+      <div>
+        <div class="brand-name">PAINEL AO VIVO</div>
+        <div class="brand-sub">Acompanhamento remoto</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="status-pill offline" id="statusPill">
+        <span class="status-dot"></span><span id="statusText">Conectando…</span>
+      </div>
+      <button class="logout-btn" id="logoutBtn" title="Sair">⏻</button>
+    </div>
+  </div>
+
+  <button class="install-btn" id="installBtn" style="display:none;">⭳ Instalar app</button>
+  <div class="ios-hint" id="iosHint" style="display:none;">
+    Para instalar: toque em <b>Compartilhar</b> <span style="font-size:13px;">⬆️</span> e depois em <b>Adicionar à Tela de Início</b>.
+  </div>
+
+  <div id="content" style="display:none;">
+    <div class="card">
+      <div class="job-line">
+        <div>
+          <div class="job-name" id="jobName">—</div>
+          <div class="job-meta" id="jobMeta">—</div>
+        </div>
+      </div>
+      <div class="readouts">
+        <div class="readout divider-r">
+          <div class="readout-label">Velocidade</div>
+          <div class="readout-value hero" id="valSpeed">0<span class="readout-unit">km/h</span></div>
+        </div>
+        <div class="readout">
+          <div class="readout-label">Área feita</div>
+          <div class="readout-value" id="valArea">0<span class="readout-unit">ha</span></div>
+        </div>
+      </div>
+      <div class="progress-wrap" id="jobProgressWrap" style="display:none;">
+        <div class="progress-labels">
+          <span>Progresso do talhão</span>
+          <span><b id="jobProgressPct">0%</b></span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="jobProgressFill"></div></div>
+        <div class="progress-labels" style="margin-top:6px;margin-bottom:0;">
+          <span id="jobProgressHa">—</span>
+          <span id="jobRemainingHa">—</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="stat-card"><div class="lbl">Operador</div><div class="val" id="valOperador">—</div></div>
+      <div class="stat-card"><div class="lbl">Fazenda</div><div class="val" id="valFazenda">—</div></div>
+      <div class="stat-card"><div class="lbl">Talhão</div><div class="val" id="valTalhao">—</div></div>
+      <div class="stat-card"><div class="lbl">Distância</div><div class="val" id="valDist">—</div></div>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="update-row">
+      <span>Última atualização</span>
+      <b id="updateAgo">—</b>
+    </div>
+  </div>
+
+  <div class="empty-state" id="emptyState">
+    <div class="big">📡</div>
+    <div class="msg">Aguardando dados do trator…<br>Abra o app Telemetria Trator e inicie o trabalho para começar a transmitir.</div>
+  </div>
+
+  <div class="sync-note" id="syncNote">Verificando conexão com Firebase…</div>
+</div>
+
+<script>
+/* ======================= AUTENTICAÇÃO (Firebase Auth) ======================= */
+let authMode = 'login'; // 'login' | 'signup'
+
+const authLoadingEl = document.getElementById('authLoading');
+const authScreenEl = document.getElementById('authScreen');
+const appWrapEl = document.getElementById('appWrap');
+const authForm = document.getElementById('authForm');
+const authEmailEl = document.getElementById('authEmail');
+const authPasswordEl = document.getElementById('authPassword');
+const authErrorEl = document.getElementById('authError');
+const authSubmitBtn = document.getElementById('authSubmitBtn');
+const authTitleEl = document.getElementById('authTitle');
+const authSubEl = document.getElementById('authSub');
+const authToggleText = document.getElementById('authToggleText');
+const authToggleBtn = document.getElementById('authToggleBtn');
+const logoutBtn = document.getElementById('logoutBtn');
+
+function setAuthMode(mode){
+  authMode = mode;
+  authErrorEl.style.display = 'none';
+  if(mode === 'signup'){
+    authTitleEl.textContent = 'Criar conta';
+    authSubEl.textContent = 'Cadastre seu e-mail e uma senha para acessar o painel.';
+    authSubmitBtn.textContent = 'Criar conta';
+    authToggleText.textContent = 'Já tem conta?';
+    authToggleBtn.textContent = 'Entrar';
+    authPasswordEl.setAttribute('autocomplete', 'new-password');
+  } else {
+    authTitleEl.textContent = 'Entrar';
+    authSubEl.textContent = 'Acesse com seu e-mail e senha para acompanhar o trator.';
+    authSubmitBtn.textContent = 'Entrar';
+    authToggleText.textContent = 'Ainda não tem conta?';
+    authToggleBtn.textContent = 'Criar conta';
+    authPasswordEl.setAttribute('autocomplete', 'current-password');
+  }
+}
+authToggleBtn.addEventListener('click', () => setAuthMode(authMode === 'login' ? 'signup' : 'login'));
+
+const AUTH_ERROR_MSG = {
+  'auth/invalid-email': 'E-mail inválido.',
+  'auth/user-disabled': 'Esta conta foi desativada.',
+  'auth/user-not-found': 'E-mail ou senha incorretos.',
+  'auth/wrong-password': 'E-mail ou senha incorretos.',
+  'auth/invalid-credential': 'E-mail ou senha incorretos.',
+  'auth/email-already-in-use': 'Este e-mail já está cadastrado. Tente entrar.',
+  'auth/weak-password': 'A senha precisa ter pelo menos 6 caracteres.',
+  'auth/too-many-requests': 'Muitas tentativas. Aguarde um pouco e tente de novo.',
+  'auth/network-request-failed': 'Falha de conexão. Verifique sua internet.'
+};
+
+authForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  authErrorEl.style.display = 'none';
+  const email = authEmailEl.value.trim();
+  const password = authPasswordEl.value;
+  authSubmitBtn.disabled = true;
+  try{
+    if(authMode === 'signup'){
+      await firebase.auth().createUserWithEmailAndPassword(email, password);
+    } else {
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+    }
+    // onAuthStateChanged cuida da troca de tela
+  }catch(err){
+    authErrorEl.textContent = AUTH_ERROR_MSG[err.code] || 'Não foi possível continuar. Tente novamente.';
+    authErrorEl.style.display = 'block';
+  }finally{
+    authSubmitBtn.disabled = false;
+  }
+});
+
+logoutBtn.addEventListener('click', () => {
+  firebase.auth().signOut();
+});
+
+firebase.auth().onAuthStateChanged((user) => {
+  authLoadingEl.style.display = 'none';
+  if(user){
+    authScreenEl.style.display = 'none';
+    appWrapEl.style.display = 'block';
+    startTelemetryListener();
+  } else {
+    appWrapEl.style.display = 'none';
+    authScreenEl.style.display = 'block';
+    stopTelemetryListener();
+  }
+});
+
+/* ======================= FIREBASE (somente leitura) ======================= */
+// Mesmo projeto do Telemetria Trator — este painel só lê o documento telemetria_live/atual.
+const firebaseConfig = {
+  apiKey: "AIzaSyD2lHB5tC4-8K_d8-SsNIvksF5vIErBlw0",
+  authDomain: "mapas-talhao.firebaseapp.com",
+  projectId: "mapas-talhao",
+  storageBucket: "mapas-talhao.firebasestorage.app",
+  messagingSenderId: "919142593673",
+  appId: "1:919142593673:web:3d46cfad50665f3eec8258",
+  measurementId: "G-SDW8L0W0X2"
+};
+let db = null, firebaseOK = false;
+try{
+  firebase.initializeApp(firebaseConfig);
+  db = firebase.firestore();
+  firebaseOK = true;
+}catch(e){ firebaseOK = false; }
+
+document.getElementById('syncNote').textContent = firebaseOK
+  ? 'Conectado ao Firebase — atualiza automaticamente conforme o trator transmite.'
+  : 'Sem conexão com Firebase — verifique sua internet.';
+document.getElementById('syncNote').classList.toggle('err', !firebaseOK);
+
+/* ======================= MAPA ======================= */
+let map = null, marker = null, pathLine = null, mapReady = false;
+function ensureMap(){
+  if(mapReady) return;
+  map = L.map('map', {zoomControl:true, attributionControl:false}).setView([-4.3, -44.5], 13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19}).addTo(map);
+  const icon = L.divIcon({
+    className:'',
+    html:'<div style="width:16px;height:16px;border-radius:50%;background:#3B9EEB;border:3px solid #0B120D;box-shadow:0 0 0 4px rgba(59,158,235,.35);"></div>',
+    iconSize:[16,16], iconAnchor:[8,8]
+  });
+  marker = L.marker([-4.3,-44.5], {icon}).addTo(map);
+  pathLine = L.polyline([], {color:'#E8A33D', weight:3, opacity:.85}).addTo(map);
+  mapReady = true;
+}
+
+/* ======================= FORMATAÇÃO ======================= */
+function fmt(n, d=1){ return (n==null || isNaN(n)) ? '—' : Number(n).toFixed(d).replace('.', ','); }
+function timeAgoLabel(iso){
+  if(!iso) return '—';
+  const secs = Math.floor((Date.now() - new Date(iso).getTime())/1000);
+  if(secs < 5) return 'agora mesmo';
+  if(secs < 60) return `há ${secs}s`;
+  const mins = Math.floor(secs/60);
+  if(mins < 60) return `há ${mins} min`;
+  const hrs = Math.floor(mins/60);
+  return `há ${hrs} h`;
+}
+
+let lastData = null;
+
+function render(){
+  const empty = document.getElementById('emptyState');
+  const content = document.getElementById('content');
+  const pill = document.getElementById('statusPill');
+  const pillText = document.getElementById('statusText');
+
+  if(!lastData){
+    empty.style.display = 'block';
+    content.style.display = 'none';
+    pill.className = 'status-pill offline';
+    pillText.textContent = 'Sem dados';
+    return;
+  }
+
+  empty.style.display = 'none';
+  content.style.display = 'block';
+
+  const secsSinceUpdate = (Date.now() - new Date(lastData.updatedISO).getTime())/1000;
+  const isStale = secsSinceUpdate > 30;
+
+  if(isStale){
+    pill.className = 'status-pill offline';
+    pillText.textContent = 'Sem sinal';
+  } else if(lastData.status === 'ativo'){
+    pill.className = 'status-pill ativo';
+    pillText.textContent = 'Trabalhando';
+  } else {
+    pill.className = 'status-pill pausado';
+    pillText.textContent = 'Pausado';
+  }
+
+  document.getElementById('jobName').textContent = lastData.jobNome || 'Sem trabalho ativo';
+  document.getElementById('jobMeta').textContent = lastData.jobAreaHa ? `Área do talhão: ${fmt(lastData.jobAreaHa,2)} ha` : 'Modo livre';
+
+  document.getElementById('valSpeed').innerHTML = `${fmt(lastData.speedKmh,1)}<span class="readout-unit">km/h</span>`;
+  document.getElementById('valArea').innerHTML = `${fmt(lastData.areaHa,2)}<span class="readout-unit">ha</span>`;
+  document.getElementById('valOperador').textContent = lastData.operador || '—';
+  document.getElementById('valFazenda').textContent = lastData.fazenda || '—';
+  document.getElementById('valTalhao').textContent = lastData.talhao || '—';
+  document.getElementById('valDist').textContent = lastData.distKm != null ? `${fmt(lastData.distKm,2)} km` : '—';
+
+  const progWrap = document.getElementById('jobProgressWrap');
+  if(lastData.jobAreaHa && lastData.areaHa != null){
+    progWrap.style.display = 'block';
+    const pct = Math.min(100, (lastData.areaHa / lastData.jobAreaHa) * 100);
+    const remaining = Math.max(0, lastData.jobAreaHa - lastData.areaHa);
+    document.getElementById('jobProgressFill').style.width = pct + '%';
+    document.getElementById('jobProgressPct').textContent = fmt(pct,0) + '%';
+    document.getElementById('jobProgressHa').textContent = `${fmt(lastData.areaHa,2)} / ${fmt(lastData.jobAreaHa,2)} ha`;
+    document.getElementById('jobRemainingHa').textContent = `restam ${fmt(remaining,2)} ha`;
+  } else {
+    progWrap.style.display = 'none';
+  }
+
+  document.getElementById('updateAgo').textContent = timeAgoLabel(lastData.updatedISO);
+
+  if(lastData.lat != null && lastData.lng != null){
+    ensureMap();
+    const latlng = [lastData.lat, lastData.lng];
+    marker.setLatLng(latlng);
+    map.panTo(latlng, {animate:true});
+    if(map.getZoom() < 15) map.setZoom(17);
+  }
+  if(lastData.jobPoints && lastData.jobPoints.length){
+    ensureMap();
+    const pts = lastData.jobPoints.map(p => [p.lat ?? p[0], p.lng ?? p[1]]);
+    pathLine.setLatLngs(pts);
+  }
+}
+
+/* ======================= LISTENER EM TEMPO REAL ======================= */
+// Só começa a ouvir o Firestore depois do login (ver onAuthStateChanged acima).
+let unsubscribeTelemetry = null;
+
+function startTelemetryListener(){
+  if(!firebaseOK || unsubscribeTelemetry) return;
+  unsubscribeTelemetry = db.collection('telemetria_live').doc('atual').onSnapshot((doc)=>{
+    lastData = doc.exists ? doc.data() : null;
+    render();
+  }, (err)=>{
+    console.warn('Falha ao ouvir Firebase', err);
+    document.getElementById('syncNote').textContent = 'Erro ao conectar ao Firebase.';
+    document.getElementById('syncNote').classList.add('err');
+  });
+}
+
+function stopTelemetryListener(){
+  if(unsubscribeTelemetry){
+    unsubscribeTelemetry();
+    unsubscribeTelemetry = null;
+  }
+  lastData = null;
+}
+
+// atualiza o "há Xs" a cada segundo, e marca como sem sinal se passar de 30s sem novo dado
+setInterval(render, 1000);
+render();
+
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('./sw.js').catch(()=>{});
+}
+
+/* ======================= INSTALAÇÃO PWA ======================= */
+const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+  || window.navigator.standalone === true;
+
+let deferredPrompt = null;
+const installBtn = document.getElementById('installBtn');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  if(!isStandalone) installBtn.style.display = 'flex';
+});
+
+installBtn.addEventListener('click', async () => {
+  if(!deferredPrompt) return;
+  installBtn.style.display = 'none';
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt = null;
+});
+
+window.addEventListener('appinstalled', () => {
+  installBtn.style.display = 'none';
+});
+
+// iOS Safari não tem beforeinstallprompt — mostra instrução manual
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+const isSafari = /^((?!chrome|android|crios|fxios).)*safari/i.test(navigator.userAgent);
+if(isIOS && isSafari && !isStandalone){
+  document.getElementById('iosHint').style.display = 'block';
+}
+</script>
+</body>
+</html>
