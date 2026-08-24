@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Telemetria Trator</title>
+<meta name="theme-color" content="#0B120D">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%20%22Telemetria%20Trator%22%2C%20%22short_name%22%3A%20%22Telemetria%22%2C%20%22description%22%3A%20%22Telemetria%20de%20trator%3A%20velocidade%20e%20rendimento%20%28ha/h%29%20em%20tempo%20real%20via%20GPS%22%2C%20%22start_url%22%3A%20%22./%22%2C%20%22scope%22%3A%20%22./%22%2C%20%22display%22%3A%20%22standalone%22%2C%20%22orientation%22%3A%20%22portrait%22%2C%20%22background_color%22%3A%20%22%230B120D%22%2C%20%22theme_color%22%3A%20%22%230B120D%22%2C%20%22icons%22%3A%20%5B%7B%22src%22%3A%20%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAHWklEQVR4nO3dPW7cZhDG8VkjneHGnZAuhjsXOUCO4jv4LL6Mz%2BEiXZB0gYsAagS5dQqDNrXi7r7k%2B/XMzP9XGTAgrcjn4Qy5%2BjiZmJevX32b/RrQz%2BP9w2n2a1ib%2BmIIO8zmlmL4Jyb0uGZ0GYZ9MoKPPUYVofsnIfio0bsI3T44wUdLvYrQ/IMSfPTUuggvWn4wwo/eWmesSZsIPmZoMQ2qJwDhxywtsldVAMKP2WozeLgAhB8qarJ4qACEH2qOZnJ3AQg/VB3J5q4CEH6o25vR4gIQfnixJ6tFBSD88KY0szcLQPjhVUl2m34rBODN1QJw9Yd3tzJ8sQCEH1FcyzIrEFLbLABXf0RzKdNMAKT2rABc/RHVVraZAEjtyU/UcPVv7%2B%2BPv1d/jDcfPld/DPy0/kkyCtBIi6DvRTGO2SwA4d9nRuBvoRDllhJQgB0UQ38JZbiOAhTyFPpLKMNzTwpA%2BJ%2BKEPpLKMNPj/cPJwqwEjn45ygCBfghU/DPZS5C%2BgKMCn5NyDy8Rq/SFqBXqEaGKMLXMNvj/cPpRPiPUwpL1K%2BrtzQFaBUQD%2BHI9LXWSlGA2kB4DkLmr71E6AJw8n/iWGwLW4CaEx71ZJtxXM6FLMDRkxzxBF/CMfouVAE4qftlP2ZhCnDkREY5iS1kPX4hfiQy68lr6cjxiPAtJO4nwN6TQPBvy3RMXU%2BATCdqpL3HyfMkcFsAwt/X3uN199uvfV5IZy5XoD3hJ/j1bh3vPz7%2B9%2BPfX/75t/OracvdBKgN/5e//mz3YpK4dhFZh9/M3yRwVYBW4acE%2B20dz/PwLzyVwM0KVBP%2BS4G/e/uu4hXltJyHS%2BFf87AOuZoAJUrDf%2Bv/sO3Nh89F4ffCRQFKr/5bY5qrfHulV3YPq5B8AWrCv7hWAqbAMVFKIF2AFuFfUIL2IpRAugAlWj3npwTHeLjRvUa2AD3eXr91P0AJ%2BlGdApIFaLn6nKME7XlehSQLUKJm9eHJUHteVyG5ApRc/Vvs/dwUt1dSArUpIFWA0d9WSwnmUCqBVAFKjPzuTkqwn7dVSKYAo1afc9wUt%2BdpFZIpwEyUIC%2BJAsy6%2Bq9Rgra8TAGJAqjg8Wg%2B0wugcPVf48lQOx6mwPQCKKIEeUwtgNrVvxQlKKc%2BBZgAF3BTnIN0AWZf/SlBG8pvjk0rgJffJsaToTFmrUGyE2D21X%2BNm%2BJ6qlNAtgBqKEFMUwrgZf3ZgxLUm7EGSU4ApfVnjZviOoprkGQBlFGCWIYXIML6w5OhfkavQXITQHX9OcdN8TFqa5BcATyhBP5RgI4ogb6hBYiw/5/jpri9kfcBUhPAy/5/jhLso3Qf8MvsFxDF3dt3N/8WwVKUS5PQ6wXAMwrQ0LUSfP30/uYKuP5/yjCG1AoUwdY69PXT%2B90fJ%2BL9kiIK0MG6BEfCv6AE/Q0rQMaTWRP%2BRcbjZjbuSZDMBIi287YI/yJiCVSeBMkUIJIegY1YAgUUAKlRAKRGARrruaqwBrVHAZAaBUBqFACpUQCkRgGQGgVorOc72tHeLVdAAZAaBUBqFKCDHqsK608fFKCTloEl/P3IFCDi2/wtghs1/LP/ON5iWAGinshbar7urMfMbNzPC8hMgMiOBDlz%2BEfit0IMsg40vxZFBwWYgKDrYAVCalIFiPgkCM%2BpPAEyG1wARj9KjPyNEVITABiNAiA1uQJwHxCb0v5vNqEA3AfgmtG/MU5uAgAjSRaANSgmtfXHbFIBWIOwZcYvzJWcAMAosgVgDYpFcf0xm1gA1iCszfp7AbITwIwpEIXq1d9MvABAb1MLULIGMQV8K7n6z/xzSUwApDa9AEyBuNSv/mYCBQBmkigAUyAeD1d/M5ECALPIFIApEIeXq7%2BZUAFKUQJtym96bZEqAN8ekYPK1d9MrABmrEKeeVp9FnIFKEUJtHhbfRaSBShdhSiBhtLwq139zUQLYMb9QDSK4TcTLkAppsBcXlefhXQBWIW0eV59FtIFMKMEqiKE38xBAcwogZoo4TdzUgCgFzcFKJkCPDkao%2BTK7uHqb%2BaoAGbXA074x7oWcC/hN3NWALPtoBP%2BObaC7in8Zg4LYPY08IR/rnXgvYXfzOz08vWrb7NfBDCLywkAtEIBkBoFQGoUAKlRAKRGAZAaBUBqFACpUQCk9uLx/uE0%2B0UAMzzeP5yYAEiNAiA1CoDUKABSe2H2/WZg9gsBRloyzwRAahQAqf0oAGsQslhnnQmA1J4UgCmA6M4zzgRAas8KwBRAVFvZZgIgtc0CMAUQzaVMMwGQ2sUCMAUQxbUsX50AlADe3cowKxBSu1kApgC8Kslu0QSgBPCmNLPFKxAlgBd7srrrHoASQN3ejO6%2BCaYEUHUkm4eeAlECqDmaycOPQSkBVNRksep9AEqA2WozWP1GGCXALC2y1zS8/MVJjNDyotv0WyGYBuitdca6BZZpgJZ6XVy7X7EpAmr03iqGrSwUAXuMWqeH7%2BwUAdeMvo%2BcetNKGWA29%2BGJ3FMbShGb2pPC/wGNTBF9o4nQcgAAAABJRU5ErkJggg%3D%3D%22%2C%20%22sizes%22%3A%20%22192x192%22%2C%20%22type%22%3A%20%22image/png%22%2C%20%22purpose%22%3A%20%22any%20maskable%22%7D%2C%20%7B%22src%22%3A%20%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAVs0lEQVR4nO3dPa5kSbUG0HNb7ZXKKa%2BFB8LDYAAM5c2BsfRk3jgw8BB4qA2kckr13MK4L7vz3sqf8xcRe8deywIhNZnnZp7vix1xsl8WQvrw6eO30a8B4AxfP395Gf0a%2BJ4/yiACHuCVgjCGi96BsAfYRilozwVuQOADnEshOJ8LegKBD9CXQnCcC7iT0AeIQRnYx0XbQOgDxKYMrOdCPSH0AXJSBh5zce4Q/ABzUARuc1GuCH2AuSkDv3EhFsEPUI0iULwACH6A2ioXgZJvXPADcK1iESj1hgU/AI9UKgIl3qjgB2CLCkXgh9EvoDXhD8BWFbJj2oZT4Y8HQHuzTgOme1OCH4AWZisCU20BCH8AWpktY6ZoM7P9UQCIbYZpQPoJgPAHoLcZsid1AZjhDwBATtkzKOUII/tFB2AuGbcE0k0AhD8A0WTMplQFIOMFBqCGbBmVYmSR7aICUFuGLYHwEwDhD0A2GbIrdAHIcAEB4JboGRa2AES/cADwTOQsC1kAIl8wANgiaqaFKwBRLxQA7BUx20IVgIgXCADOEC3jwhSAaBcGAM4WKetCFIBIFwQAWoqSecMLQJQLAQC9RMi%2BoQUgwgUAgBFGZ%2BCwAjD6jQPAaCOzcEgBEP4A8GpUJnYvAMIfAN4akY1dC4DwB4DbemdktwIg/AHgsZ5Z2aUACH8AWKdXZg7/HQAAoL/mBcDqHwC26ZGdTQuA8AeAfVpnaLMCIPwB4JiWWeoMAAAU1KQAWP0DwDlaZerpBUD4A8C5WmTrqQVA%2BANAG2dnrDMAAFDQaQXA6h8A2joza08pAMIfAPo4K3NtAQBAQYcLgNU/APR1RvaaAABAQYcKgNU/AIxxNIN3FwDhDwBjHcliWwAAUNCuAmD1DwAx7M1kEwAAKGhzAbD6B4BY9mSzCQAAFLSpAFj9A0BMWzPaBAAAClpdAKz%2BASC2LVltAgAABa0qAFb/AJDD2sw2AQCAghQAACjoaQEw/geAXNZk9489XgjQ3j9//nO3/68//PVv3f6/gDZeHv2PVv8wXs9gP5uiAGN9/fzlbs4rABBA5pDfSzmA9hQACKRi2K%2BlFMC5dhUA4Q/HCfvjlAI45l4JUADgRAK/PYUAtlEAoAGBP55CAI9tKgDCH24T%2BPEpBPC9WyVAAYAnhH5eygC8UgBgJaE/H2WAylYVAOFPVUK/DmWAit6XAAWA0oQ%2BygBVKACwCH6%2BpwgwOwWAsoQ%2BaykDzOhhARD%2BzEjws5ciwGyuS4ACwJSEPmdTBpiBAsC0BD%2BtKQJkpgAwHcFPb4oAGd0sAMKfjAQ/oykCZHMpAQoAKQl%2BolEEyEIBICXBT3SKANEpAKQi%2BMlGESAqBYAUBD/ZKQJE86YACH%2BiEfz79Agbf5t9FAEi%2Bfr5y4sCQCjC5baM4eFveVvGvyXzUQAIRWDUCAd/5xp/Z2JTAAihaiAIgd/4DEBfCgBDVbrpu9Fv5/MB7SgADFPh5u6mfh6fFziXAkB3M9/I3cD78TmCYxQAuprxpu1mPZ7PFWz39fOXlxfhT2uz3aDdnOPyWYP1FACamuWG7Eacj88ePKYA0MQMN1833nn4PML3FABOl/lm6yY7P59PeKUAcKqsN1c31np8VqlOAeAUbqZk5bNLVQoAh2W7gbpxco/PMpUoAByS6YbpZslaPtdUoACwixskFficMzMFgM2y3BTdEDmLzzwzUgDYJMON0E2QVnz%2BmYkCwGrRb35ufPTiu8AMFACecrOD23w3yOyH0S%2BA2Nzg4L7on7/o31/GMgHgrsg3j%2Bg3XurxfSEbBYCbot7M3MiIzneHLGwB8B03MNgv6uc06veacUwAeCPiTSLqDRWe8X0iMgWAX0W7WblRMQvfLSJSAAh3c1oWNyjm43tGNApAcdFuSm5IzM53jigcAizMjQj6i/Y5j3YfoB8FoKhoX/poN0VoKdrnPdr9gD5sARQU6cse7UYIvfk%2BMooJQDFuNhBLlO/BX37%2Bz/LT7383%2BmXQkQJQiPCHmEZ/H/7y839%2B/c9KQB22AIqIEv6jb3QQXe/v6nX4X/vlX//u%2BjrozwSgAOEPefT8ntwL/2UxCahAAaAL4Q/r9fi%2BPAp/arAFMLnRq3/BD8e0%2BA5vCX9bAfMyAZiY8If8zv4ebV352wqYlwIwqYzh/8s//n7%2BC4EJnFUC9o79lYA5KQATyhz%2BSgDcdrQEHN3zVwLmowBMJnP43/vvwKu9JeCsA39KwFwcApxItvB/FvQ//fFPB14NzGvLd73FaX8HA%2BdgAjCJ2cIfuG/t963Vo34mAXNQADisVfgrCXDfs%2B%2Bd5/x5RgGYwMjVf%2BuVvxIA9937/vUIf1OA/JwBSG5U%2BPd%2BzM95AHjsci/ovfJ3HiAvBSCxLOF/1ipeCYDHRq3KlYCcbAEkVS38z/5nwYxGBbHtgJwUAJoR2ABxKQAJZVn9txjZKxXwmCkAaykAyWQJ/wslAPpTAlhDAUgkW/hfKAHQnxLAMwoAD0X%2BV/oqAfCY0/k8ogAkMWL1f2b4t3qETwmAx0aUAFOAHBSABLKH/4Xn%2BGEMJYBbFIDgZgn/C%2BcBYAwlgPcUAN7oseevBMAYzgRwTQEIrPfqv%2BeBPyUAxuhdAkwB4lIAghr5b/jLTAmAeJSAmBQAlmUZ87ifJwNgDFsBLIsCENLMo//3PBkAY9gKQAEIplL4XzgPAGMoAbUpAISgBAD0pQAEUnH1f00JgP5MAepSAIKoHv4tKQHwmBJQkwJQUOTw92QAjOHJgHoUgAA88/%2BWJwNgfqYA4ykAxURe/V9zHgD6MwWoRQEYrOfqP0v4XygB0F/PEmAKMJYCMJDwf04JgP6UgBoUAEpSAoDqFIBBrP7X82QA9GcKMD8FYHLZw/9CCYD%2BHAqcmwIwgMf%2B9vF4IMzLFKA/BWBis6z%2BrzkUCH2ZAsxLAejM6v84JQDmZArQlwIwqRlX/60pAXCbKcCcFICOeq3%2BK4S/Q4HQV68SYArQjwJAWkoAwH4KQCdW/214MgD6MQWYiwJAeg4FAmynAHRg9d%2BeEgB9mALMQwGYROXwv1ACoA9PBcxBAWjMc//5KQEwhilAWwrABKz%2Bf%2BPJAOjDFCA/BaAhq/8xPBkA8zAFaEcBSM7q/zbnAaA9U4DcFIBGrP7HUwJgDqYAbSgAiVn9P6cEQFumAHkpALCDEgBkpwA00GP8b/W/nicDoK0eUwDbAOdTACjBkwEAbykAJ7P6j8t5AGjHFCAfBYBSlACAVwpAMlb/xykB0IYnAnJRAE7k2f/alABozzbAeRQASvJkAFCdAnASh//y8WQAnM9hwDwUAEpzHgCoSgFIwuq/HSUAzuUwYA4KwAkc/stPCYBcbAMcpwAkYPWflxJAVaYA8SkA8P88GQBUogAcZPw/FyUA8rANcIwCEJzxf38eD4Rz2AaITQGAGxwKBGanABxg/D83JQDisw2wnwIQmPH/eEoAHGMbIC4FAAZQAoDRFICdjP/r8GQAxGYbYB8FICjj/1g8GQD72QaISQGAlZwHAGaiAMAGSgAwCwVgh9b7/8b/sSkBsF3rbQDnALZTACAIJQDoSQGAHTwZAGSnAARj/J%2BHJwNgG08DxKIAbOT5f645DwBxOAewjQIABykBQEYKAJxACQCyUQACsf/Pe0oAs3EOIA4FYAP7/zziyQAYzzmA9RQAOJEnA4AsFIAgjP/n4TwAPGYbIAYFABpQAoDoFABoRAkAIlMAVnIAkCiUAHjMQcB1FABoyJMBQFQKQAAOAM5NCYDvOQg4ngIAHXg8EIjmx9EvAKr46Y9/On3V/ss//r66XKw9x2IiBTW8fPj08dvoFxFd6wOAbri1tBjd3yoBZ31ufT5ppfVhPdsMj5kAwAQuk4AWZfX6n6kMwDxMAFZoOQFwQ63p7CnA//3v/5z6z3vG55aztJwCmAA8ZgIAA5x1HqB38F9cSrEiAHl5CgAGOfpkwKjwv%2BYHsiAvEwAYaM8kIELwXzMNgJxMAGCwLZOAaOF/zTQAclEAnnBTo4c1JSBy%2BF/4vhCJfyfAYwrAQEamrJUh/C%2BUALZwUn8cBQCCuDcFyBT%2BF0oAxKcAQCDvS0DG8L9QAiA2BQCCuZSAzOF/oQRAXAoABOTfHgi0pgBAQDOtnGd6LzATBQCCmTEwZ3xPkJ0CAAAFKQAQyMwr5ZnfG2SkADzghgWQm18DvE8BGMSvAPJehcJZ4T2ynV8DHEMBAICCFAAAKEgBgAAqjcYrvVeITAEAgIIUAAAoSAEAgIIUABis4p54xfcM0SgAAFCQAgAABSkAAFCQAgAABSkAAFCQAgAABSkAAFCQAgAABSkAAFCQAgCD/eGvfxv9Erqr%2BJ4hGgUAAApSAACgIAUAAApSACCASnvild4rRKYAAEBBCgAAFKQAQBAVRuMV3iNkoQAM8s%2Bf/zz6JQCE8NPvfzf6JZSkADxgtUJvM3/mZn5vxPXLv/49%2BiWEpQAAQEEKAAQz40p5xvcE2SkAENBMgTnTe4GZKAAAUJACAEHNsHKe4T3ArBQACCxzgGZ%2B7VCBAgDBZQzSjK8ZqlEAIIFMgZrptUJlCsBAfg2QLTIEa4bXSCx%2BBXAcBeAJNzQiifx5jPzaqMmvAD724%2BgXAGxzCdooEyTBDzmZAEBSEYI3wmsA9jEBgMRGTQMEP%2BSnAMAEehUBwQ/zePnw6eO30S8iOjdVMjrrc%2BvzSSutnwBwCPAxEwCY1PvgXlsIBD7UYAKwUsspgBsuUFHLCYDV/3OeAgCAghQAAChIAQggyg%2B6APTiJ4DHUwAAoCAFYCUH9QBycABwHQUAAApSAACgIAUgCAcBgSocAIxBAQCAghSADRwEBIjNAcD1FIBAbAMAszP%2Bj0MBAICCFAAAKEgB2Mg5AICY7P9vowAE4xwAMCv7/7EoAABQkAIAAAUpADu0PgdgGwCYTevxv/3/7RQAAChIAQCAghSAoGwDALNw%2Bj8mBWAnvwcAEIP9/30UAAAoSAEIzDYAkJ3xf1wKwAG2AQDGMv7fTwEAgIIUgOBsAwBZGf/HpgAcZBsAYAzj/2MUAAAoSAFIwDYAkI3xf3wKwAlsAwD0Zfx/nAKQhCkAkIXVfw4KAAAUpACcpMc2gCkAEF2P1b/x/zkUAAAoSAE4kcOAAG1Z/Z9HAUjGNgAQlcN/uSgAAFCQAnAyhwGBihz%2By0cBAICCFIAGTAGASqz%2Bc1IAAKAgBSAxUwBgNCf/81IAGvGbAADnMP5vQwFIzhQAGMXqPzcFoCFTAIBjrP7bUQAmYAoA9Gb1n58C0JgpAMA%2BVv9tKQCTMAUAerH6n4MC0EGvKYASALTWK/yt/ttTAACgIAWgE1MAIDur/7koAABQkALQkSkAkJXV/3wUgEkpAcBZnPqfkwLQmd8FALjN6r8vBWBipgDAUVb/81IABjAFAHjL6r8/BWBypgDAXlb/c1MABuk5BVACgK16hr/V/xgKAAAUpAAMZAoARGT1X4MCMJgSAEQi/OtQAIpRAoB7HPqrRQEIwGOBQDVW/%2BMpAAWZAgDvWf3XowAE0XsKoAQAF73D3%2Bo/BgUgECUA6E3416UAAEBBCkAwpgBAL1b/tSkAASkBQGvCHwWAZVmUAKjEiX%2BWRQEIy28DALOw%2Bo9JAQjMVgBwNqN/LhQA3lACYF5G/1xTAIIbsRWgBMB8RoS/1X9sCkACSgBwhPDnFgUgCSUA2EP4c48CwENKAORlz59HFIBERj0aqARAPqPC3%2Bo/DwUgGSUAeEb4s4YCkJASANwj/FlLAQCAghSApEwBgPes/tlCAUjMvy8AGE3456UAJNe7BCgdEFfvMBb%2BuSkAE%2BgVysIf4usVysI/PwWAVYQ/5CGcWUMBmETLgBb%2BkE/LEqBgzEEBmEiLoBb%2BkFeLoBb%2B81AAJnNmYAt/yO/MwBb%2Bc1EAJnRGcAt/mMcZwS3856MATOpIgAt/mM%2BRABf%2Bc1IAJrYnyIU/zGtPkAv/eSkAk9sS6MIf5rcl0IX/3BQAlmUR/lCJYGdZFIASnoW78Id6npUAJWF%2BCkAR90Je%2BENd90Je%2BNegABTyPuyFP/A%2B7IV/HQpAMZfQF/7AxSX0hX8tLx8%2Bffw2%2BkUAAH2ZAABAQQoAABSkAABAQQoAABSkAABAQQoAABSkAABAQQoAABSkAABAQQoAABSkAABAQQoAABSkAABAQQoAABSkAABAQQoAABSkAABAQQoAABSkAABAQQoAABSkAABAQT98/fzlZfSLAAD6%2Bfr5y4sJAAAUpAAAQEEKAAAUpAAAQEEKAAAUpAAAQEEKAAAU9MOyvD4POPqFAADtXTLfBAAAClIAAKAgBQAAClIAAKCgXwuAg4AAMLfrrDcBAICCFAAAKEgBAICC3hQA5wAAYE7vM94EAAAKUgAAoCAFAAAK%2Bq4AOAcAAHO5le0mAABQkAIAAAXdLAC2AQBgDvcy3QQAAApSAACgoLsFwDYAAOT2KMtNAACgIAUAAAp6WABsAwBATs8y3AQAAAp6WgBMAQAglzXZbQIAAAUpAABQ0KoCYBsAAHJYm9kmAABQ0OoCYAoAALFtyWoTAAAoaFMBMAUAgJi2ZrQJAAAUtLkAmAIAQCx7stkEAAAK2lUATAEAIIa9mWwCAAAF7S4ApgAAMNaRLD40AVACAGCMoxlsCwAACjpcAEwBAKCvM7LXBAAACjqlAJgCAEAfZ2XuaRMAJQAA2joza20BAEBBpxYAUwAAaOPsjD19AqAEAMC5WmRrky0AJQAAztEqU50BAICCmhUAUwAAOKZlljadACgBALBP6wxtvgWgBADANj2y0xkAACioSwEwBQCAdXplZrcJgBIAAI/1zMquWwBKAADc1jsju58BUAIA4K0R2TjkEKASAACvRmXisKcAlAAAqhuZhUMfA1QCAKhqdAYO/x2A0RcAAHqLkH3DC8CyxLgQANBDlMwLUQCWJc4FAYBWImVdmAKwLLEuDACcKVrGhSoAyxLvAgHAURGzLVwBWJaYFwoA9oiaaSELwLLEvWAAsFbkLAtbAJYl9oUDgEeiZ1joArAs8S8gALyXIbvCv8BrHz59/Db6NQDAPRmC/yL8BOBapgsLQC3ZMipVAViWfBcYgPllzKZ0L/iaLQEARsoY/BfpJgDXMl94AHLLnkGpC8Cy5P8DAJDPDNmT/g1csyUAQEszBP9F%2BgnAtZn%2BMADEMlvGTPVmrpkGAHCG2YL/Yso3dU0RAGCPWYP/YqotgFtm/wMCcL4K2TH9G7xmGgDAIxWC/6LMG72mCABwrVLwX5R7w9cUAYDaKgb/Rdk3fk0RAKilcvBflL8A1xQBgLkJ/t%2B4EHcoAwBzEPq3uShPKAIAOQn%2Bx1ycDZQBgNiE/nou1E7KAEAMQn8fF%2B0EygBAX0L/OBewAYUA4FwC/3wuaAcKAcA2Ar89F3gQpQDglbAfw0UPSkEAZiHgY/ovzwUpSvqM/7YAAAAASUVORK5CYII%3D%22%2C%20%22sizes%22%3A%20%22512x512%22%2C%20%22type%22%3A%20%22image/png%22%2C%20%22purpose%22%3A%20%22any%20maskable%22%7D%5D%7D">
+<link rel="icon" type="image/png" sizes="512x512" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Telemetria">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+:root{
+  --bg:#0B120D;
+  --surface:#121C15;
+  --surface-2:#182419;
+  --line:#243428;
+  --amber:#E8A33D;
+  --amber-dim:#8A6425;
+  --green:#7CB35C;
+  --green-track:#2ECC71;
+  --blue-loc:#3B9EEB;
+  --red:#D96B4F;
+  --text:#F2EDE1;
+  --text-muted:#8FA08F;
+  --mono:'Chakra Petch',monospace;
+  --sans:'Inter',sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:var(--sans);height:100%;overscroll-behavior:none;}
+body{padding-bottom:76px;}
+::selection{background:var(--amber);color:#0B120D;}
+
+/* header */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px 10px;
+}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand-mark{
+  width:34px;height:34px;border-radius:8px;background:linear-gradient(160deg,var(--amber),var(--amber-dim));
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+}
+.brand-name{font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:.03em;}
+.brand-sub{font-size:10px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-top:1px;}
+.status-pill{
+  font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;
+  padding:5px 10px;border-radius:20px;border:1px solid var(--line);color:var(--text-muted);
+  display:flex;align-items:center;gap:6px;
+}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--text-muted);}
+.status-pill.active{border-color:var(--green);color:var(--green);}
+.status-pill.active .status-dot{background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 1.4s infinite;}
+.status-pill.paused{border-color:var(--amber);color:var(--amber);}
+.status-pill.paused .status-dot{background:var(--amber);}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* tabs */
+.tabs{display:flex;gap:4px;padding:0 18px 12px;}
+.tab-btn{
+  flex:1;padding:9px 0;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.03em;
+  background:transparent;border:1px solid var(--line);color:var(--text-muted);border-radius:10px;text-transform:uppercase;
+}
+.tab-btn.on{background:var(--surface-2);color:var(--amber);border-color:var(--amber-dim);}
+
+.view{display:none;padding:0 18px;}
+.view.on{display:block;}
+
+/* instrument cluster */
+.cluster{
+  background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px 18px;margin-bottom:14px;
+  position:relative;overflow:hidden;
+}
+.cluster::before{
+  content:'';position:absolute;top:-40%;right:-20%;width:60%;height:180%;
+  background:radial-gradient(closest-side,rgba(232,163,61,.08),transparent);
+}
+.cluster-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;position:relative;}
+.readout{padding:6px 10px;}
+.readout-label{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.09em;margin-bottom:4px;}
+.readout-value{font-family:var(--mono);font-weight:600;font-size:38px;line-height:1;color:var(--text);}
+.readout-value.hero{font-size:52px;color:var(--amber);}
+.readout-unit{font-size:13px;color:var(--text-muted);margin-left:4px;font-weight:400;}
+.readout.divider-r{border-right:1px solid var(--line);}
+.readout.divider-t{border-top:1px solid var(--line);margin-top:14px;padding-top:16px;}
+.progress-wrap{margin-top:16px;position:relative;}
+.progress-labels{display:flex;justify-content:space-between;font-size:10.5px;color:var(--text-muted);margin-bottom:6px;}
+.progress-labels b{color:var(--amber);font-weight:600;font-family:var(--mono);}
+.progress-track{height:8px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden;}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--amber-dim),var(--amber));transition:width .25s ease;}
+
+.stat-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px;}
+.stat-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 10px;text-align:center;}
+.stat-card .lbl{font-size:9.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;}
+.stat-card .val{font-family:var(--mono);font-size:18px;font-weight:600;margin-top:4px;}
+
+#mapWrap{position:relative;margin-bottom:14px;}
+#map{height:220px;border-radius:16px;border:1px solid var(--line);background:#0e150f;}
+.locate-btn{
+  position:absolute;bottom:10px;right:10px;z-index:500;
+  width:38px;height:38px;border-radius:50%;
+  background:var(--surface);border:1px solid var(--line);color:var(--blue-loc);
+  font-size:17px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.45);
+}
+.locate-btn:active{transform:scale(.94);}
+.locate-btn.loading{opacity:.55;}
+.import-row{margin-bottom:10px;}
+.import-note{
+  display:flex;align-items:center;justify-content:space-between;background:var(--surface);
+  border:1px solid var(--amber-dim);border-radius:10px;padding:8px 12px;margin-bottom:10px;font-size:12px;
+}
+.import-note button{background:none;border:none;color:var(--red);font-family:var(--mono);font-size:11px;}
+
+.field{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  display:flex;align-items:center;justify-content:space-between;padding:12px 14px;margin-bottom:10px;
+}
+.field label{font-size:12.5px;color:var(--text-muted);}
+.field input[type=number], .field input[type=text]{
+  background:var(--surface-2);border:1px solid var(--line);color:var(--text);
+  font-family:var(--mono);font-size:15px;width:90px;text-align:right;padding:8px 10px;border-radius:8px;
+}
+.field input:focus{outline:none;border-color:var(--amber-dim);}
+
+.btn-row{display:flex;gap:10px;margin:16px 0;}
+.btn{
+  flex:1;padding:16px 0;border-radius:14px;border:none;font-family:var(--mono);font-weight:600;
+  font-size:14px;letter-spacing:.04em;text-transform:uppercase;
+}
+.btn-start{background:var(--green);color:#0B120D;}
+.btn-stop{background:var(--red);color:#0B120D;}
+.btn-pause{background:var(--amber);color:#0B120D;}
+.btn-ghost{background:var(--surface-2);color:var(--text);border:1px solid var(--line);}
+.btn:active{transform:scale(.97);}
+.btn[disabled]{opacity:.4;}
+
+.parada-picker{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;margin:0 0 16px;}
+.parada-picker-title{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;font-family:var(--mono);}
+.parada-picker-row{display:flex;gap:8px;}
+.btn-parada{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 4px;border-radius:12px;border:1px solid var(--line);background:var(--surface-2);color:var(--text);font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.02em;}
+.btn-parada span{line-height:1.2;}
+.btn-parada:active{transform:scale(.96);}
+.btn-parada.abastecimento{border-color:var(--blue-loc);color:var(--blue-loc);}
+.btn-parada.manutencao{border-color:var(--amber-dim);color:var(--amber);}
+.btn-parada.mecanico{border-color:var(--red);color:var(--red);}
+#cancelParadaBtn{width:100%;margin-top:10px;padding:10px 0;font-size:11px;}
+
+.parada-banner{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:0 0 14px;}
+.parada-banner .icon{font-size:20px;line-height:1;}
+.parada-banner .txt{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.02em;}
+.parada-banner .since{font-size:10.5px;color:var(--text-muted);margin-left:auto;font-family:var(--mono);white-space:nowrap;}
+.parada-banner.abastecimento{border-color:var(--blue-loc);}
+.parada-banner.abastecimento .txt{color:var(--blue-loc);}
+.parada-banner.manutencao{border-color:var(--amber-dim);}
+.parada-banner.manutencao .txt{color:var(--amber);}
+.parada-banner.mecanico{border-color:var(--red);}
+.parada-banner.mecanico .txt{color:var(--red);}
+
+.mini-actions{display:flex;gap:10px;margin-bottom:22px;}
+.mini-actions .btn{padding:12px 0;font-size:12px;}
+
+/* history */
+.session-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px;position:relative;
+}
+.session-card .date{font-family:var(--mono);color:var(--amber);font-size:13px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:8px;}
+.session-card .date span{flex:1;}
+.del-session-btn{background:none;border:none;font-size:14px;line-height:1;cursor:pointer;opacity:.55;padding:2px 4px;flex-shrink:0;}
+.del-session-btn:hover{opacity:1;}
+.session-metrics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
+.session-metrics div{font-size:11px;color:var(--text-muted);}
+.session-metrics b{display:block;color:var(--text);font-family:var(--mono);font-size:15px;margin-top:2px;}
+.empty-state{text-align:center;color:var(--text-muted);font-size:13px;padding:40px 20px;}
+
+/* trabalhos */
+.job-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px;
+}
+.job-card.active{border-color:#7CB35C;}
+.job-card .job-title{font-family:var(--mono);color:var(--amber);font-size:14px;margin-bottom:2px;}
+.job-card .job-sub{color:var(--text-muted);font-size:11.5px;margin-bottom:10px;}
+.job-card .job-area{font-family:var(--mono);color:var(--text);font-size:20px;margin-bottom:12px;}
+.job-card .job-actions{display:flex;gap:6px;}
+.job-card .job-actions .btn{flex:1;padding:9px 4px;font-size:11px;}
+.job-active-tag{display:inline-block;background:#1E3A14;color:#7CB35C;font-size:10px;font-family:var(--mono);
+  padding:2px 8px;border-radius:6px;margin-left:8px;vertical-align:middle;text-transform:uppercase;}
+
+.footer-bar{
+  position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--line);
+  padding:10px 18px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;
+}
+.sync-note{font-size:10px;color:var(--text-muted);text-align:center;margin:6px 0 16px;}
+.sync-note.err{color:var(--red);}
+#liveSyncBar{display:none;margin:0 18px 10px;padding:8px 12px;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;font-family:var(--mono);font-size:11px;align-items:center;gap:8px;}
+#liveSyncBar.show{display:flex;}
+#liveSyncBar .dot{width:7px;height:7px;border-radius:50%;flex:none;background:var(--text-muted);}
+#liveSyncBar.ok{border-color:var(--green);color:var(--green);}
+#liveSyncBar.ok .dot{background:var(--green);box-shadow:0 0 8px var(--green);}
+#liveSyncBar.warn{border-color:var(--amber);color:var(--amber);}
+#liveSyncBar.warn .dot{background:var(--amber);}
+#liveSyncBar.fail{border-color:var(--red);color:var(--red);}
+#liveSyncBar.fail .dot{background:var(--red);}
+#machineCodeBar{margin:0 18px 10px;padding:8px 12px;background:var(--surface-2);border:1px solid var(--amber-dim);border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
+#machineCodeBar .code-label{font-size:9px;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;}
+#machineCodeBar .code-value{font-family:var(--mono);font-size:14px;color:var(--amber);font-weight:600;letter-spacing:.02em;}
+#machineCodeBar .code-copy-btn{background:none;border:1px solid var(--line);color:var(--text-muted);border-radius:8px;padding:5px 9px;font-size:11px;font-family:var(--mono);flex-shrink:0;}
+.machine-id-locked{display:flex;align-items:center;gap:8px;}
+.machine-id-locked input{flex:1;opacity:.7;}
+.machine-id-locked input[readonly]{background:var(--surface);cursor:not-allowed;}
+#unlockMachineIdBtn{flex-shrink:0;background:none;border:1px solid var(--line);color:var(--text-muted);border-radius:8px;padding:9px 10px;font-size:11px;font-family:var(--mono);}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-mark">🚜</div>
+    <div>
+      <div class="brand-name">TELEMETRIA</div>
+      <div class="brand-sub">Rendimento de campo</div>
+    </div>
+  </div>
+  <div class="status-pill" id="statusPill"><span class="status-dot"></span><span id="statusText">Parado</span></div>
+</div>
+<button id="installBtn" style="display:none;margin:0 18px 10px;padding:10px;background:var(--surface-2);color:var(--amber);border:1px solid var(--amber-dim);border-radius:10px;font-family:var(--mono);font-size:12px;letter-spacing:.03em;width:calc(100% - 36px);">📲 Instalar aplicativo</button>
+<div id="liveSyncBar"><span class="dot"></span><span id="liveSyncText">🛰️ Ao vivo: —</span></div>
+<div id="machineCodeBar">
+  <div>
+    <div class="code-label">Código desta máquina (use no app Rastreamento)</div>
+    <div class="code-value" id="machineCodeDisplay">—</div>
+  </div>
+  <button class="code-copy-btn" id="copyMachineCodeBtn" type="button">📋 copiar</button>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn on" data-view="opView">Operação</button>
+  <button class="tab-btn" data-view="jobsView">Trabalhos</button>
+  <button class="tab-btn" data-view="histView">Histórico</button>
+  <button class="tab-btn" data-view="cfgView">Ajustes</button>
+</div>
+
+<!-- OPERAÇÃO -->
+<div class="view on" id="opView">
+  <div class="cluster">
+    <div class="cluster-grid">
+      <div class="readout divider-r">
+        <div class="readout-label">Velocidade <span id="speedNote" style="text-transform:none;letter-spacing:0;">(a cada 50 m)</span></div>
+        <div class="readout-value" id="speedVal">0,0<span class="readout-unit">km/h</span></div>
+      </div>
+      <div class="readout">
+        <div class="readout-label">Rendimento agora <span id="avgCountNote" style="text-transform:none;letter-spacing:0;">(média de 0/5)</span></div>
+        <div class="readout-value hero" id="instRate">0,00<span class="readout-unit">ha/h</span></div>
+      </div>
+    </div>
+    <div class="readout divider-t">
+      <div class="readout-label">Rendimento médio da sessão</div>
+      <div class="readout-value" id="avgRate">0,00<span class="readout-unit">ha/h</span></div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-labels">
+        <span>Progresso do ciclo <b id="progLive">(velocidade ao vivo: 0,0 km/h)</b></span>
+        <span id="progText">0 / 50 m</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progFill"></div></div>
+    </div>
+  </div>
+
+  <div id="jobProgressWrap" class="progress-wrap" style="display:none;">
+    <div class="progress-labels">
+      <span>Progresso do trabalho <b id="jobProgressName"></b></span>
+      <span id="jobProgressText">0%</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="jobProgressFill" style="background:linear-gradient(90deg,#4C7A34,#7CB35C);"></div></div>
+    <div style="display:flex;justify-content:flex-end;margin-top:4px;">
+      <span style="font-family:var(--mono);font-size:11px;color:var(--text-muted);">restam <b id="jobRemainingHa" style="color:#7CB35C;">0,00 ha</b></span>
+    </div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-card"><div class="lbl">Área</div><div class="val" id="areaVal">0,00 ha</div></div>
+    <div class="stat-card"><div class="lbl">Distância</div><div class="val" id="distVal">0,00 km</div></div>
+    <div class="stat-card"><div class="lbl">Tempo</div><div class="val" id="timeVal">00:00:00</div></div>
+  </div>
+
+  <div class="import-row" style="display:flex;gap:8px;">
+    <button class="btn btn-ghost" id="importBtn" style="flex:1;padding:10px 0;font-size:12px;">🗺️ Importar (KML/KMZ)</button>
+    <button class="btn btn-ghost" id="bordaduraBtn" style="flex:1;padding:10px 0;font-size:12px;">📐 Marcar bordadura</button>
+    <input type="file" id="kmlFileInput" accept=".kml,.kmz" style="display:none;">
+  </div>
+  <div id="importedNote" style="display:none;" class="import-note"></div>
+  <div id="bordaduraNote" style="display:none;" class="import-note"></div>
+  <div id="mapWrap">
+    <div id="map"></div>
+    <button id="locateBtn" class="locate-btn" title="Minha localização atual">📍</button>
+  </div>
+
+  <div class="parada-banner" id="paradaBanner" style="display:none;">
+    <span class="icon" id="paradaIcon"></span>
+    <span class="txt" id="paradaText"></span>
+    <span class="since" id="paradaSince"></span>
+  </div>
+
+  <div class="parada-picker" id="paradaPicker" style="display:none;">
+    <div class="parada-picker-title">Motivo da parada</div>
+    <div class="parada-picker-row">
+      <button class="btn-parada abastecimento" data-motivo="abastecimento">⛽<span>Abastecimento</span></button>
+      <button class="btn-parada manutencao" data-motivo="manutencao">🔧<span>Manutenção</span></button>
+      <button class="btn-parada mecanico" data-motivo="mecanico">⚠️<span>Problema mecânico</span></button>
+    </div>
+    <button class="btn btn-ghost" id="cancelParadaBtn">Cancelar</button>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-start" id="startBtn">▶ Iniciar operação</button>
+    <button class="btn btn-pause" id="pauseBtn" style="display:none;">⏸ Pausar</button>
+    <button class="btn btn-start" id="resumeBtn" style="display:none;">▶ Retomar</button>
+    <button class="btn btn-stop" id="stopBtn" style="display:none;">■ Finalizar</button>
+  </div>
+</div>
+
+<!-- TRABALHOS -->
+<div class="view" id="jobsView">
+  <button class="btn btn-start" id="createJobBtn" style="margin-bottom:14px;">📐 Criar trabalho</button>
+  <div id="jobsList"><div class="empty-state">Nenhum trabalho criado ainda.<br>Toque em "Criar trabalho" e ande pelo perímetro do talhão.</div></div>
+</div>
+
+<!-- HISTÓRICO -->
+<div class="view" id="histView">
+  <div id="histList"><div class="empty-state">Nenhuma sessão registrada ainda.</div></div>
+</div>
+
+<!-- AJUSTES -->
+<div class="view" id="cfgView">
+  <div class="field">
+    <label>Largura de trabalho (m)</label>
+    <input type="number" id="widthInput" step="0.1" value="12" min="0.1">
+  </div>
+  <div class="field">
+    <label>Intervalo de cálculo (m)</label>
+    <input type="number" id="intervalInput" step="1" value="50" min="1">
+  </div>
+  <div class="field">
+    <label>Medições para média</label>
+    <input type="number" id="avgCountInput" step="1" value="5" min="1">
+  </div>
+  <div class="field">
+    <label>ID da máquina (código de rastreamento)</label>
+    <div class="machine-id-locked">
+      <input type="text" id="machineIdInput" placeholder="Ex: fazenda-rio-da-vida-trator1" readonly>
+      <button type="button" id="unlockMachineIdBtn">🔓 alterar</button>
+    </div>
+    <div style="font-size:11px;color:var(--text-muted);margin-top:4px;">Compartilhe esse código com quem for acompanhar essa máquina no app Rastreamento. Cada fazenda/máquina deve usar um código diferente. Depois de definido, o código fica travado — se ele mudar, o Rastreamento perde o vínculo com esta máquina e mostra "sem sinal" mesmo com o app funcionando.</div>
+  </div>
+  <div class="field">
+    <label>Operador</label>
+    <input type="text" id="operatorInput" placeholder="Nome">
+  </div>
+  <div class="field">
+    <label>Talhão / Área</label>
+    <input type="text" id="fieldInput" placeholder="Ex: Talhão 3">
+  </div>
+  <div class="field">
+    <label>Fazenda</label>
+    <input type="text" id="farmInput" placeholder="Ex: Rio da Vida">
+  </div>
+  <div class="sync-note" id="syncNote">Verificando conexão com Firebase…</div>
+</div>
+
+<div class="footer-bar" id="footerBar" style="display:none;">
+  <button class="btn btn-ghost" id="pdfBtn">📄 PDF</button>
+  <button class="btn btn-ghost" id="waBtn">📲 WhatsApp</button>
+</div>
+
+<script>
+/* ======================= FIREBASE ======================= */
+// Substitua pelas credenciais do seu projeto Firebase (mesmo padrão dos outros apps do ecossistema Agro).
+const firebaseConfig = {
+  apiKey: "AIzaSyD2lHB5tC4-8K_d8-SsNIvksF5vIErBlw0",
+  authDomain: "mapas-talhao.firebaseapp.com",
+  projectId: "mapas-talhao",
+  storageBucket: "mapas-talhao.firebasestorage.app",
+  messagingSenderId: "919142593673",
+  appId: "1:919142593673:web:3d46cfad50665f3eec8258",
+  measurementId: "G-SDW8L0W0X2"
+};
+let db = null, firebaseOK = false;
+const isPlaceholderConfig = !firebaseConfig.apiKey || firebaseConfig.apiKey.startsWith('SUA_');
+if(!isPlaceholderConfig){
+  try{
+    firebase.initializeApp(firebaseConfig);
+    db = firebase.firestore();
+    firebaseOK = true;
+  }catch(e){ firebaseOK = false; }
+}
+
+const COLLECTION = "telemetria_sessoes";
+
+/* ======================= STATE ======================= */
+let tracking = false;
+let watchId = null;
+let path = []; // {lat,lng,t,speedKmh}
+let polyline = null, marker = null, map = null, importedLayer = null, locateMarker = null, tileLayer = null, coverageLayer = null;
+let bordaduraActive = false, bordaduraWatchId = null, bordaduraPoints = [], bordaduraLine = null, bordaduraLayer = null;
+let startTime = null;
+let elapsedWorkMs = 0; // only accumulates while moving
+let lastTickTime = null;
+let totalDistanceKm = 0;
+let lastPos = null;
+let currentSpeedKmh = 0;
+let timerInterval = null;
+const MIN_MOVE_SPEED_KMH = 0.6; // below this, treated as idle (não conta tempo/área)
+const MAX_ACCEPT_ACCURACY_M = 35;
+
+// checkpoint por deslocamento: só recalcula velocidade/rendimento a cada X metros
+let segDistKm = 0;
+let segStartTime = null;
+let measurementBuffer = []; // últimas N velocidades medidas (uma por checkpoint), pra suavizar a média
+let sessionSpeedSamples = []; // todas as medições da sessão (sem suavizar), pra achar mais lenta/mais rápida no relatório
+
+function widthM(){ return parseFloat(document.getElementById('widthInput').value) || 0; }
+function intervalKm(){ return (parseFloat(document.getElementById('intervalInput').value) || 50) / 1000; }
+function avgCount(){ return Math.max(1, parseInt(document.getElementById('avgCountInput').value) || 5); }
+
+/* ======================= GRADE DE COBERTURA (área real, sem contar sobreposição) =======================
+   Problema: área = distância × largura conta duas vezes qualquer trecho por onde o implemento passou
+   mais de uma vez (retrabalho, manobra de cabeceira, sobreposição de passadas). Isso infla o rendimento
+   e o progresso do talhão.
+   Solução: divide o terreno em células de CELL_SIZE_M × CELL_SIZE_M e marca como "coberta" cada célula
+   que a faixa de trabalho (largura do implemento) tocou. Célula já marcada não soma de novo — a área
+   final é sempre o território realmente coberto, nunca mais que isso, mesmo passando 5x no mesmo lugar.
+   A grade é ancorada num ponto de referência fixo por talhão (o centro da bordadura), então ela é a
+   mesma em todas as sessões — sobreposição ENTRE sessões diferentes também não conta duas vezes. */
+const CELL_SIZE_M = 2;
+const CELL_KEY_OFFSET = 2000000; // desloca índices negativos pra positivo antes de codificar a chave
+const CELL_KEY_MOD = 4000001;
+
+let coverageRef = null;       // {lat,lng} — ponto fixo de referência da grade do talhão/sessão atual
+let coveredCells = new Set(); // chaves numéricas das células (CELL_SIZE_M x CELL_SIZE_M) já cobertas
+let sessionStartCellCount = 0; // quantas células já estavam cobertas ao iniciar esta sessão — pra medir área NOVA
+
+function projectXY(lat,lng,refLat,refLng){
+  const R = 6371000;
+  const cosLat = Math.cos(refLat*Math.PI/180) || 1e-9;
+  return [ (lng-refLng)*Math.PI/180*R*cosLat, (lat-refLat)*Math.PI/180*R ];
+}
+function unprojectXY(x,y,refLat,refLng){
+  const R = 6371000;
+  const cosLat = Math.cos(refLat*Math.PI/180) || 1e-9;
+  return [ refLat + (y/R)*180/Math.PI, refLng + (x/(R*cosLat))*180/Math.PI ];
+}
+function cellKey(ix,iy){ return (ix+CELL_KEY_OFFSET)*CELL_KEY_MOD + (iy+CELL_KEY_OFFSET); }
+function decodeCellKey(key){
+  const ix = Math.floor(key/CELL_KEY_MOD) - CELL_KEY_OFFSET;
+  const iy = (key - Math.floor(key/CELL_KEY_MOD)*CELL_KEY_MOD) - CELL_KEY_OFFSET;
+  return [ix,iy];
+}
+function polygonCentroidLatLng(points){
+  if(!points || !points.length) return null;
+  let sLat=0,sLng=0;
+  points.forEach(p=>{ const lat=Array.isArray(p)?p[0]:p.lat, lng=Array.isArray(p)?p[1]:p.lng; sLat+=lat; sLng+=lng; });
+  return {lat:sLat/points.length, lng:sLng/points.length};
+}
+// teste ponto-dentro-de-quadrilátero convexo (a faixa entre dois pontos é sempre um retângulo)
+function pointInConvexQuad(px,py,corners){
+  let sign = 0;
+  for(let k=0;k<4;k++){
+    const a = corners[k], b = corners[(k+1)%4];
+    const cross = (b[0]-a[0])*(py-a[1]) - (b[1]-a[1])*(px-a[0]);
+    if(cross !== 0){
+      const s = cross>0?1:-1;
+      if(sign===0) sign = s;
+      else if(s!==sign) return false;
+    }
+  }
+  return true;
+}
+
+// marca na grade todas as células cobertas pela faixa de trabalho entre dois pontos consecutivos
+function markSwathCells(lat1,lng1,lat2,lng2,wM){
+  if(!coverageRef) coverageRef = {lat:lat1,lng:lng1};
+  const [x1,y1] = projectXY(lat1,lng1,coverageRef.lat,coverageRef.lng);
+  const [x2,y2] = projectXY(lat2,lng2,coverageRef.lat,coverageRef.lng);
+  const dx = x2-x1, dy = y2-y1;
+  const len = Math.sqrt(dx*dx+dy*dy);
+  if(len < 0.05) return; // pulo muito curto, ignora
+  const halfW = wM/2;
+  const ux = dx/len, uy = dy/len;
+  const px = -uy*halfW, py = ux*halfW;
+  const corners = [ [x1+px,y1+py], [x2+px,y2+py], [x2-px,y2-py], [x1-px,y1-py] ];
+  const minX = Math.min(...corners.map(c=>c[0])), maxX = Math.max(...corners.map(c=>c[0]));
+  const minY = Math.min(...corners.map(c=>c[1])), maxY = Math.max(...corners.map(c=>c[1]));
+  const i0 = Math.floor(minX/CELL_SIZE_M), i1 = Math.ceil(maxX/CELL_SIZE_M);
+  const j0 = Math.floor(minY/CELL_SIZE_M), j1 = Math.ceil(maxY/CELL_SIZE_M);
+  for(let i=i0;i<=i1;i++){
+    for(let j=j0;j<=j1;j++){
+      const cx = (i+0.5)*CELL_SIZE_M, cy = (j+0.5)*CELL_SIZE_M;
+      if(pointInConvexQuad(cx,cy,corners)) coveredCells.add(cellKey(i,j));
+    }
+  }
+}
+
+function coveredAreaHa(){
+  return (coveredCells.size * CELL_SIZE_M * CELL_SIZE_M) / 10000;
+}
+
+// carrega a grade de cobertura de um talhão (histórico salvo) como ponto de partida da sessão atual;
+// se o talhão ainda não tem grade salva (talhão novo ou trabalho criado antes dessa versão),
+// começa do zero ancorada no centro da bordadura, pra manter a mesma referência em sessões futuras
+function loadJobCoverageGrid(job){
+  const cov = job && job.coverage;
+  if(cov && cov.ref){
+    coverageRef = cov.ref;
+    coveredCells = new Set(cov.cells || []);
+  }else{
+    coverageRef = job && job.points && job.points.length ? polygonCentroidLatLng(job.points) : null;
+    coveredCells = new Set();
+  }
+}
+
+// redesenha a área já coberta, mesclando células vizinhas da mesma linha em retângulos maiores
+// (bem mais rápido que desenhar quadradinho por quadradinho)
+function drawCoverageCells(ref, cells){
+  coverageLayer.clearLayers();
+  if(!ref || !cells || !cells.length) return;
+  const byRow = new Map();
+  cells.forEach(key=>{
+    const [ix,iy] = decodeCellKey(key);
+    if(!byRow.has(iy)) byRow.set(iy, []);
+    byRow.get(iy).push(ix);
+  });
+  byRow.forEach((ixs,iy)=>{
+    ixs.sort((a,b)=>a-b);
+    let runStart = ixs[0], prev = ixs[0];
+    const flushRun = (end)=>{
+      const c1 = unprojectXY(runStart*CELL_SIZE_M, iy*CELL_SIZE_M, ref.lat, ref.lng);
+      const c2 = unprojectXY((end+1)*CELL_SIZE_M, (iy+1)*CELL_SIZE_M, ref.lat, ref.lng);
+      L.polygon([c1,[c1[0],c2[1]],c2,[c2[0],c1[1]]],{color:'transparent',weight:0,fillColor:'#7CB35C',fillOpacity:.35}).addTo(coverageLayer);
+    };
+    for(let k=1;k<ixs.length;k++){
+      if(ixs[k] !== prev+1){ flushRun(prev); runStart = ixs[k]; }
+      prev = ixs[k];
+    }
+    flushRun(prev);
+  });
+}
+// idem, mas a partir de um job salvo (histórico persistido)
+function redrawJobCoverageHistory(job){
+  const cov = job && job.coverage;
+  drawCoverageCells(cov && cov.ref, cov && cov.cells);
+}
+
+/* ======================= UTILS ======================= */
+function haversineKm(lat1,lon1,lat2,lon2){
+  const R=6371;
+  const dLat=(lat2-lat1)*Math.PI/180, dLon=(lon2-lon1)*Math.PI/180;
+  const a=Math.sin(dLat/2)**2+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
+  return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+}
+function fmt(n,d=2){ return n.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d}); }
+function fmtTime(ms){
+  const s=Math.floor(ms/1000);
+  const h=String(Math.floor(s/3600)).padStart(2,'0');
+  const m=String(Math.floor((s%3600)/60)).padStart(2,'0');
+  const sec=String(s%60).padStart(2,'0');
+  return `${h}:${m}:${sec}`;
+}
+function fmtMinSec(min){
+  if(min >= 1) return fmt(min,1)+' min';
+  return Math.round(min*60)+' s';
+}
+
+/* ======================= MAP ======================= */
+function initMap(){
+  map = L.map('map',{zoomControl:false,attributionControl:false}).setView([-4.3,-44.4],14);
+  tileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
+    crossOrigin:'anonymous', maxZoom:19
+  }).addTo(map);
+  L.control.attribution({prefix:false}).addAttribution('© OpenStreetMap contributors © CARTO').addTo(map);
+  coverageLayer = L.layerGroup().addTo(map); // faixa pintada = área já coberta (largura de trabalho)
+  polyline = L.polyline([],{color:'#2ECC71',weight:4}).addTo(map);
+  importedLayer = L.layerGroup().addTo(map);
+  bordaduraLayer = L.layerGroup().addTo(map);
+}
+
+// área (ha) de um polígono fechado [[lat,lng],...] via shoelace sobre projeção equiretangular local
+function polygonAreaHa(points){
+  if(points.length < 3) return 0;
+  const R = 6371000;
+  const latRad = points[0][0]*Math.PI/180;
+  const cosLat = Math.cos(latRad) || 1e-9;
+  const xy = points.map(([lat,lng])=> [ (lng*Math.PI/180)*R*cosLat, (lat*Math.PI/180)*R ]);
+  let area = 0;
+  for(let i=0;i<xy.length;i++){
+    const [x1,y1] = xy[i], [x2,y2] = xy[(i+1)%xy.length];
+    area += x1*y2 - x2*y1;
+  }
+  return Math.abs(area)/2/10000; // m² -> ha
+}
+
+/* calcula os 4 cantos de uma faixa (largura de trabalho) entre dois pontos GPS,
+   usando projeção equiretangular local (precisão de sobra pra distâncias curtas dentro do talhão) */
+function coverageSwathPolygon(lat1,lng1,lat2,lng2,widthM){
+  const R = 6371000;
+  const latRad = lat1*Math.PI/180;
+  const cosLat = Math.cos(latRad) || 1e-9;
+  const toXY = (lat,lng)=>[ (lng*Math.PI/180)*R*cosLat, (lat*Math.PI/180)*R ];
+  const toLatLng = (x,y)=>[ y/R*180/Math.PI, x/(R*cosLat)*180/Math.PI ];
+  const [x1,y1] = toXY(lat1,lng1);
+  const [x2,y2] = toXY(lat2,lng2);
+  const dx = x2-x1, dy = y2-y1;
+  const len = Math.sqrt(dx*dx+dy*dy);
+  if(len < 0.05) return null; // pulo muito curto, ignora (evita faixas degeneradas)
+  const halfW = widthM/2;
+  const px = (-dy/len)*halfW, py = (dx/len)*halfW;
+  return [
+    toLatLng(x1+px, y1+py),
+    toLatLng(x2+px, y2+py),
+    toLatLng(x2-px, y2-py),
+    toLatLng(x1-px, y1-py)
+  ];
+}
+
+// o html2canvas não lida bem com transform:translate3d (usado pelo Leaflet pra posicionar tiles/overlays),
+// então antes do print convertemos pra translate 2D equivalente, e devolvemos ao original depois da captura
+function flatten3DTransforms(root){
+  const changed = [];
+  root.querySelectorAll('*').forEach(el=>{
+    const t = el.style.transform;
+    if(t && t.includes('translate3d')){
+      changed.push({el, orig:t});
+      el.style.transform = t.replace(/translate3d\(([^,]+),\s*([^,]+),\s*[^)]+\)/, 'translate($1, $2)');
+    }
+  });
+  return changed;
+}
+function restore3DTransforms(changed){
+  changed.forEach(({el,orig})=>{ el.style.transform = orig; });
+}
+
+// espera os tiles do mapa terminarem de carregar (usado antes de tirar o print pro PDF,
+// pra não capturar o mapa pela metade depois de um fitBounds)
+function waitForTilesToLoad(maxWaitMs=3000){
+  return new Promise(resolve=>{
+    if(!tileLayer || typeof tileLayer.isLoading !== 'function' || !tileLayer.isLoading()){
+      setTimeout(resolve, 150); // já carregado: só um respiro pro reflow do pan/zoom
+      return;
+    }
+    let settled = false;
+    const finish = ()=>{ if(settled) return; settled = true; tileLayer.off('load', finish); resolve(); };
+    tileLayer.once('load', finish);
+    setTimeout(finish, maxWaitMs); // nunca trava o botão de PDF, mesmo se algum tile falhar
+  });
+}
+
+/* ======================= LOCALIZAÇÃO ATUAL ======================= */
+function goToCurrentLocation(){
+  if(!navigator.geolocation){ alert('GPS não disponível neste dispositivo.'); return; }
+  const btn = document.getElementById('locateBtn');
+  btn.classList.add('loading');
+  navigator.geolocation.getCurrentPosition(
+    (pos)=>{
+      const {latitude,longitude} = pos.coords;
+      if(!locateMarker){
+        locateMarker = L.circleMarker([latitude,longitude],{
+          radius:8, color:'#3B9EEB', weight:2, fillColor:'#3B9EEB', fillOpacity:.9
+        }).addTo(map);
+      }else{
+        locateMarker.setLatLng([latitude,longitude]);
+      }
+      map.setView([latitude,longitude], Math.max(map.getZoom(),16));
+      btn.classList.remove('loading');
+    },
+    (err)=>{
+      console.warn('Erro ao obter localização', err);
+      alert('Não consegui obter sua localização atual. Verifique se o GPS está ativado e a permissão foi concedida.');
+      btn.classList.remove('loading');
+    },
+    {enableHighAccuracy:true, timeout:15000, maximumAge:5000}
+  );
+}
+document.getElementById('locateBtn').addEventListener('click', goToCurrentLocation);
+
+/* ======================= IMPORTAR KML/KMZ ======================= */
+function parseKmlCoords(text){
+  // texto de <coordinates> no formato "lon,lat,alt lon,lat,alt ..."
+  return text.trim().split(/\s+/).map(pair=>{
+    const [lon,lat] = pair.split(',').map(Number);
+    return [lat,lon];
+  }).filter(p=> !isNaN(p[0]) && !isNaN(p[1]));
+}
+
+function saveKmlToStorage(fileName, kmlText){
+  try{ localStorage.setItem('telemetria_kml_import', JSON.stringify({fileName, kmlText})); }
+  catch(e){ console.warn('Não consegui salvar o mapa importado localmente', e); }
+}
+function loadKmlFromStorage(){
+  try{
+    const raw = localStorage.getItem('telemetria_kml_import');
+    if(!raw) return;
+    const {fileName, kmlText} = JSON.parse(raw);
+    renderKmlDoc(kmlText, fileName, false); // false = não regrava no storage, já está lá
+  }catch(e){ console.warn('Não consegui restaurar o mapa importado', e); }
+}
+
+function renderKmlDoc(kmlText, fileName, persist=true){
+  const xml = new DOMParser().parseFromString(kmlText, 'text/xml');
+  importedLayer.clearLayers();
+  let count = 0;
+  const allBounds = [];
+
+  xml.querySelectorAll('Polygon').forEach(poly=>{
+    const coordsEl = poly.querySelector('outerBoundaryIs coordinates, LinearRing coordinates');
+    if(!coordsEl) return;
+    const latlngs = parseKmlCoords(coordsEl.textContent);
+    if(latlngs.length<3) return;
+    L.polygon(latlngs,{color:'#7CB35C',weight:2,fillColor:'#7CB35C',fillOpacity:.12}).addTo(importedLayer);
+    allBounds.push(...latlngs); count++;
+  });
+  xml.querySelectorAll('LineString').forEach(ls=>{
+    const coordsEl = ls.querySelector('coordinates');
+    if(!coordsEl) return;
+    const latlngs = parseKmlCoords(coordsEl.textContent);
+    if(latlngs.length<2) return;
+    L.polyline(latlngs,{color:'#7CB35C',weight:2,dashArray:'6,4'}).addTo(importedLayer);
+    allBounds.push(...latlngs); count++;
+  });
+  xml.querySelectorAll('Point').forEach(pt=>{
+    const coordsEl = pt.querySelector('coordinates');
+    if(!coordsEl) return;
+    const latlngs = parseKmlCoords(coordsEl.textContent);
+    if(!latlngs.length) return;
+    L.circleMarker(latlngs[0],{radius:5,color:'#7CB35C',fillColor:'#7CB35C',fillOpacity:1}).addTo(importedLayer);
+    allBounds.push(latlngs[0]); count++;
+  });
+
+  if(count===0){ alert('Não encontrei nenhum talhão/linha/ponto válido nesse arquivo.'); return; }
+  if(allBounds.length){ map.fitBounds(allBounds, {padding:[20,20]}); }
+  if(persist){ saveKmlToStorage(fileName, kmlText); }
+
+  const note = document.getElementById('importedNote');
+  note.style.display='flex';
+  note.innerHTML = `<span>🗺️ ${fileName}</span><button id="clearImportBtn">remover</button>`;
+  document.getElementById('clearImportBtn').addEventListener('click',()=>{
+    importedLayer.clearLayers();
+    note.style.display='none';
+    localStorage.removeItem('telemetria_kml_import');
+  });
+}
+
+async function handleKmlFile(file){
+  const name = file.name.toLowerCase();
+  try{
+    if(name.endsWith('.kmz')){
+      const zip = await JSZip.loadAsync(file);
+      const kmlEntry = Object.values(zip.files).find(f=> f.name.toLowerCase().endsWith('.kml'));
+      if(!kmlEntry){ alert('Não encontrei um .kml dentro do KMZ.'); return; }
+      const text = await kmlEntry.async('text');
+      renderKmlDoc(text, file.name);
+    }else{
+      const text = await file.text();
+      renderKmlDoc(text, file.name);
+    }
+  }catch(e){
+    console.warn('Erro ao importar KML/KMZ', e);
+    alert('Não consegui ler esse arquivo. Confira se é um KML/KMZ válido.');
+  }
+}
+
+document.getElementById('importBtn').addEventListener('click',()=> document.getElementById('kmlFileInput').click());
+document.getElementById('kmlFileInput').addEventListener('change',(e)=>{
+  const file = e.target.files[0];
+  if(file) handleKmlFile(file);
+  e.target.value = '';
+});
+
+
+/* ======================= BORDADURA (perímetro do talhão) ======================= */
+let creatingJob = false; // true quando a bordadura está sendo marcada a partir de "Criar trabalho"
+
+function toggleBordadura(){
+  if(!bordaduraActive) startBordadura(); else finishBordadura();
+}
+
+function startBordadura(){
+  if(!navigator.geolocation){ alert('GPS não disponível neste dispositivo.'); return; }
+  bordaduraActive = true;
+  bordaduraPoints = [];
+  bordaduraLayer.clearLayers();
+  document.getElementById('bordaduraNote').style.display = 'none';
+  bordaduraLine = L.polyline([],{color:'#E8A33D',weight:4,lineJoin:'round',lineCap:'round'}).addTo(bordaduraLayer);
+  const btn = document.getElementById('bordaduraBtn');
+  btn.textContent = '✓ Fechar bordadura (0 pts)';
+  btn.style.borderColor = 'var(--amber-dim)';
+  btn.style.color = 'var(--amber)';
+  bordaduraWatchId = navigator.geolocation.watchPosition(onBordaduraPosition, onGeoError, {
+    enableHighAccuracy:true, maximumAge:1000, timeout:15000
+  });
+}
+
+function onBordaduraPosition(pos){
+  const {latitude,longitude,accuracy} = pos.coords;
+  if(accuracy && accuracy > MAX_ACCEPT_ACCURACY_M){ return; }
+  bordaduraPoints.push([latitude,longitude]);
+  bordaduraLine.addLatLng([latitude,longitude]);
+  map.panTo([latitude,longitude]);
+  document.getElementById('bordaduraBtn').textContent = `✓ Fechar bordadura (${bordaduraPoints.length} pts)`;
+}
+
+// jobMeta = {id, nome, fazenda} quando essa bordadura é o mapa de um trabalho salvo; null quando é só referência solta
+function saveBordaduraToStorage(points, areaHa, jobMeta){
+  try{ localStorage.setItem('telemetria_bordadura', JSON.stringify({points, areaHa, job: jobMeta||null})); }
+  catch(e){ console.warn('Não consegui salvar a bordadura localmente', e); }
+}
+
+function showBordaduraNote(areaHa, jobMeta){
+  const note = document.getElementById('bordaduraNote');
+  note.style.display = 'flex';
+  const label = jobMeta ? `${jobMeta.nome}${jobMeta.fazenda?(' · '+jobMeta.fazenda):''}` : 'Bordadura fechada';
+  note.innerHTML = `<span>📐 ${label}: <b style="color:var(--amber)">${fmt(areaHa,2)} ha</b></span><button id="clearBordaduraBtn">remover</button>`;
+  document.getElementById('clearBordaduraBtn').addEventListener('click',()=>{
+    bordaduraLayer.clearLayers();
+    note.style.display = 'none';
+    localStorage.removeItem('telemetria_bordadura');
+    window.__bordaduraAreaHa = null;
+    window.__activeJobMeta = null;
+    updateJobProgressUI();
+  });
+  window.__bordaduraAreaHa = areaHa;
+  window.__activeJobMeta = jobMeta || null;
+  updateJobProgressUI();
+}
+
+function loadBordaduraFromStorage(){
+  try{
+    const raw = localStorage.getItem('telemetria_bordadura');
+    if(!raw) return;
+    const {points, areaHa, job} = JSON.parse(raw);
+    if(!points || points.length < 3) return;
+    bordaduraPoints = points;
+    bordaduraLayer.clearLayers();
+    L.polygon(bordaduraPoints,{color:'#E8A33D',weight:3,fillColor:'#E8A33D',fillOpacity:.08,lineJoin:'round'}).addTo(bordaduraLayer);
+    showBordaduraNote(areaHa, job);
+    if(job){ loadJobCoverageGrid(job); redrawJobCoverageHistory(job); }
+  }catch(e){ console.warn('Não consegui restaurar a bordadura', e); }
+}
+
+function finishBordadura(){
+  bordaduraActive = false;
+  if(bordaduraWatchId!==null) navigator.geolocation.clearWatch(bordaduraWatchId);
+  bordaduraWatchId = null;
+  const btn = document.getElementById('bordaduraBtn');
+  btn.textContent = '📐 Marcar bordadura';
+  btn.style.borderColor = '';
+  btn.style.color = '';
+
+  if(bordaduraPoints.length < 3){
+    if(bordaduraPoints.length > 0) alert('Marque pelo menos 3 pontos ao redor do talhão pra fechar a bordadura.');
+    bordaduraLayer.clearLayers();
+    creatingJob = false;
+    return;
+  }
+
+  const areaHa = polygonAreaHa(bordaduraPoints);
+  bordaduraLayer.clearLayers();
+  L.polygon(bordaduraPoints,{color:'#E8A33D',weight:3,fillColor:'#E8A33D',fillOpacity:.08,lineJoin:'round'}).addTo(bordaduraLayer);
+  map.fitBounds(bordaduraPoints,{padding:[20,20]});
+
+  if(creatingJob){
+    creatingJob = false;
+    promptSaveJob(bordaduraPoints, areaHa);
+  }else{
+    saveBordaduraToStorage(bordaduraPoints, areaHa, null);
+    showBordaduraNote(areaHa, null);
+  }
+}
+
+// persiste a grade de cobertura atualizada (histórico + sessão atual, sem duplicar sobreposição)
+// como o novo total "trabalhado" do talhão — muito mais preciso que somar área por sessão.
+function registerSessionToActiveJob(session){
+  if(!window.__activeJobMeta) return;
+  const list = loadJobs();
+  const idx = list.findIndex(j=> j.id === window.__activeJobMeta.id);
+  if(idx === -1) return;
+  list[idx].tempoTrabalhoMin = (list[idx].tempoTrabalhoMin||0) + session.tempoTrabalhoMin;
+  if(!list[idx].primeiraOperacaoISO) list[idx].primeiraOperacaoISO = session.inicioISO;
+  list[idx].ultimaOperacaoISO = session.dataISO;
+  list[idx].coverage = {ref: coverageRef, cells: Array.from(coveredCells)};
+  list[idx].workedHa = coveredAreaHa(); // valor derivado da grade, só cacheado pra exibir rápido nas listas
+  saveJobsList(list);
+  window.__activeJobMeta.workedHa = list[idx].workedHa;
+  window.__activeJobMeta.tempoTrabalhoMin = list[idx].tempoTrabalhoMin;
+  window.__activeJobMeta.primeiraOperacaoISO = list[idx].primeiraOperacaoISO;
+  window.__activeJobMeta.ultimaOperacaoISO = list[idx].ultimaOperacaoISO;
+  window.__activeJobMeta.coverage = list[idx].coverage;
+  // persiste o novo total junto da bordadura salva, pra sobreviver a reload
+  saveBordaduraToStorage(bordaduraPoints, window.__bordaduraAreaHa, window.__activeJobMeta);
+}
+
+document.getElementById('bordaduraBtn').addEventListener('click', toggleBordadura);
+
+/* ======================= TRABALHOS (talhão + bordadura salvos) ======================= */
+function jobsKey(){ return 'telemetria_trabalhos'; }
+function loadJobs(){
+  try{ return JSON.parse(localStorage.getItem(jobsKey())||'[]'); }
+  catch(e){ return []; }
+}
+function saveJobsList(list){
+  try{ localStorage.setItem(jobsKey(), JSON.stringify(list)); }
+  catch(e){ console.warn('Não consegui salvar a lista de trabalhos', e); }
+}
+
+// inicia a marcação de bordadura vinda da aba Trabalhos: troca pra Operação e já começa a andar o perímetro
+function createJobFlow(){
+  creatingJob = true;
+  document.querySelector('.tab-btn[data-view="opView"]').click();
+  if(!bordaduraActive) startBordadura();
+}
+
+// depois de fechar o perímetro no fluxo de criação, pede nome/fazenda e salva como trabalho
+function promptSaveJob(points, areaHa){
+  const nomeAtual = document.getElementById('fieldInput').value || '';
+  const fazendaAtual = document.getElementById('farmInput').value || '';
+  const nome = prompt('Nome do talhão:', nomeAtual) || '';
+  if(!nome.trim()){
+    alert('Trabalho não salvo — é preciso dar um nome ao talhão.');
+    return;
+  }
+  const fazenda = prompt('Fazenda (opcional):', fazendaAtual) || '';
+
+  const job = { id: genLocalId(), nome: nome.trim(), fazenda: fazenda.trim(), points, areaHa, workedHa: 0, createdISO: new Date().toISOString() };
+  const list = loadJobs();
+  list.unshift(job);
+  saveJobsList(list);
+
+  // define esse trabalho como ativo — carrega a bordadura e preenche talhão/fazenda da operação
+  applyActiveJob(job);
+
+  document.querySelector('.tab-btn[data-view="jobsView"]').click();
+}
+
+// aplica um trabalho salvo como referência ativa: desenha a bordadura, preenche talhão/fazenda, salva estado
+function applyActiveJob(job){
+  bordaduraPoints = job.points;
+  bordaduraLayer.clearLayers();
+  L.polygon(bordaduraPoints,{color:'#E8A33D',weight:3,fillColor:'#E8A33D',fillOpacity:.08,lineJoin:'round'}).addTo(bordaduraLayer);
+  const jobMeta = {id:job.id, nome:job.nome, fazenda:job.fazenda, workedHa: job.workedHa||0, tempoTrabalhoMin: job.tempoTrabalhoMin||0, primeiraOperacaoISO: job.primeiraOperacaoISO, ultimaOperacaoISO: job.ultimaOperacaoISO, coverage: job.coverage||null};
+  saveBordaduraToStorage(job.points, job.areaHa, jobMeta);
+  showBordaduraNote(job.areaHa, jobMeta);
+  // carrega a grade de cobertura desse talhão e mostra de cara tudo que já foi pintado em sessões anteriores
+  loadJobCoverageGrid(jobMeta);
+  redrawJobCoverageHistory(jobMeta);
+  document.getElementById('fieldInput').value = job.nome;
+  document.getElementById('farmInput').value = job.fazenda;
+  localStorage.setItem('cfg_fieldInput', job.nome);
+  localStorage.setItem('cfg_farmInput', job.fazenda);
+}
+
+function useJob(id){
+  const job = loadJobs().find(j=> j.id===id);
+  if(!job) return;
+  applyActiveJob(job);
+  document.querySelector('.tab-btn[data-view="opView"]').click();
+  map.fitBounds(job.points, {padding:[20,20]});
+}
+
+function deleteJobConfirm(id){
+  if(!confirm('Apagar este trabalho? Essa ação não pode ser desfeita.')) return;
+  const list = loadJobs().filter(j=> j.id!==id);
+  saveJobsList(list);
+  if(window.__activeJobMeta && window.__activeJobMeta.id===id){
+    bordaduraLayer.clearLayers();
+    document.getElementById('bordaduraNote').style.display = 'none';
+    localStorage.removeItem('telemetria_bordadura');
+    window.__bordaduraAreaHa = null;
+    window.__activeJobMeta = null;
+    updateJobProgressUI();
+  }
+  renderJobsList();
+}
+
+function renderJobsList(){
+  const list = loadJobs();
+  const el = document.getElementById('jobsList');
+  if(list.length===0){
+    el.innerHTML = '<div class="empty-state">Nenhum trabalho criado ainda.<br>Toque em "Criar trabalho" e ande pelo perímetro do talhão.</div>';
+    return;
+  }
+  const activeId = window.__activeJobMeta && window.__activeJobMeta.id;
+  el.innerHTML = list.map(j=>{
+    const d = new Date(j.createdISO);
+    const isActive = j.id===activeId;
+    const workedHa = j.workedHa||0;
+    const remainingHa = Math.max(0, j.areaHa - workedHa);
+    const pct = j.areaHa>0 ? Math.min(100,(workedHa/j.areaHa)*100) : 0;
+    const workedHours = (j.tempoTrabalhoMin||0)/60;
+    const avgRateHaH = workedHours>0 ? workedHa/workedHours : 0;
+    const inicio = j.primeiraOperacaoISO ? new Date(j.primeiraOperacaoISO) : null;
+    const ultima = j.ultimaOperacaoISO ? new Date(j.ultimaOperacaoISO) : null;
+    const horarios = inicio
+      ? `Início: ${inicio.toLocaleDateString('pt-BR')} ${inicio.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})} · Última: ${ultima.toLocaleDateString('pt-BR')} ${ultima.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}`
+      : 'Ainda não iniciado';
+    return `<div class="job-card${isActive?' active':''}">
+      <div class="job-title">${j.nome}${isActive?'<span class="job-active-tag">ativo</span>':''}</div>
+      <div class="job-sub">${j.fazenda?j.fazenda+' · ':''}criado em ${d.toLocaleDateString('pt-BR')}</div>
+      <div class="job-area">${fmt(j.areaHa,2)} ha</div>
+      <div class="job-sub" style="margin-top:-8px;">Trabalhado: ${fmt(workedHa,2)} ha (${fmt(pct,0)}%) · Restam: ${fmt(remainingHa,2)} ha</div>
+      <div class="job-sub">Rendimento médio: ${fmt(avgRateHaH,2)} ha/h</div>
+      <div class="job-sub" style="margin-bottom:10px;">${horarios}</div>
+      <div class="job-actions">
+        <button class="btn btn-start" data-use="${j.id}">▶ Usar</button>
+        <button class="btn btn-ghost" data-pdf="${j.id}">📄 PDF</button>
+        <button class="btn btn-ghost" data-del="${j.id}">🗑️</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+document.getElementById('createJobBtn').addEventListener('click', createJobFlow);
+document.getElementById('jobsList').addEventListener('click',async (e)=>{
+  const useBtn = e.target.closest('[data-use]');
+  if(useBtn){ useJob(useBtn.dataset.use); return; }
+  const delBtn = e.target.closest('[data-del]');
+  if(delBtn){ deleteJobConfirm(delBtn.dataset.del); return; }
+  const pdfBtn = e.target.closest('[data-pdf]');
+  if(pdfBtn){
+    const job = loadJobs().find(j=> j.id===pdfBtn.dataset.pdf);
+    if(!job) return;
+    const original = pdfBtn.textContent;
+    pdfBtn.textContent = '⏳'; pdfBtn.disabled = true;
+    try{ await generateJobPdf(job); }
+    catch(err){ console.warn('Falha ao gerar PDF do trabalho', err); alert('Não consegui gerar o PDF. Tenta de novo.'); }
+    pdfBtn.textContent = original; pdfBtn.disabled = false;
+  }
+});
+
+async function generateJobPdf(job){
+  // o mapa só existe na aba Operação — troca pra lá pra conseguir capturar
+  document.querySelector('.tab-btn[data-view="opView"]').click();
+  await new Promise(r=> setTimeout(r, 50));
+  map.invalidateSize({animate:false});
+
+  // esconde temporariamente outras camadas (bordadura ativa, faixa pintada, mapa importado) pra mostrar só esse talhão
+  const hiddenLayers = [bordaduraLayer, coverageLayer, importedLayer].filter(l=> l && map.hasLayer(l));
+  hiddenLayers.forEach(l=> map.removeLayer(l));
+  const tempLayer = L.layerGroup().addTo(map);
+  L.polygon(job.points,{color:'#E8A33D',weight:3,fillColor:'#E8A33D',fillOpacity:.1,lineJoin:'round'}).addTo(tempLayer);
+
+  const prevCenter = map.getCenter(), prevZoom = map.getZoom();
+  map.fitBounds(job.points, {padding:[24,24], animate:false});
+  await waitForTilesToLoad();
+  await new Promise(r=> requestAnimationFrame(()=> requestAnimationFrame(r)));
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  doc.setFontSize(16); doc.text('Relatório de Trabalho', 14, 18);
+  let y = 28;
+
+  try{
+    const mapEl = document.getElementById('map');
+    const changedTransforms = flatten3DTransforms(mapEl);
+    let canvas;
+    try{ canvas = await html2canvas(mapEl, {useCORS:true, scale:2}); }
+    finally{ restore3DTransforms(changedTransforms); }
+    const imgData = canvas.toDataURL('image/png');
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const imgWidth = pageWidth - 28;
+    const imgHeight = imgWidth * (canvas.height/canvas.width);
+    doc.addImage(imgData, 'PNG', 14, y, imgWidth, imgHeight);
+    y += imgHeight + 10;
+  }catch(e){ console.warn('Não consegui capturar o mapa no PDF do trabalho', e); }
+
+  // devolve o mapa ao estado de antes do print
+  map.removeLayer(tempLayer);
+  hiddenLayers.forEach(l=> map.addLayer(l));
+  map.setView(prevCenter, prevZoom, {animate:false});
+
+  const workedHa = job.workedHa || 0;
+  const remainingHa = Math.max(0, job.areaHa - workedHa);
+  const pct = job.areaHa>0 ? Math.min(100,(workedHa/job.areaHa)*100) : 0;
+  const workedHours = (job.tempoTrabalhoMin||0)/60;
+  const avgRateHaH = workedHours>0 ? workedHa/workedHours : 0;
+  const d = new Date(job.createdISO);
+  const inicio = job.primeiraOperacaoISO ? new Date(job.primeiraOperacaoISO) : null;
+  const ultima = job.ultimaOperacaoISO ? new Date(job.ultimaOperacaoISO) : null;
+
+  doc.setFontSize(10);
+  const lines = [
+    `Talhão: ${job.nome}`,
+    `Fazenda: ${job.fazenda || '—'}`,
+    `Criado em: ${d.toLocaleDateString('pt-BR')}`,
+    `Área total: ${fmt(job.areaHa,2)} ha`,
+    `Área trabalhada: ${fmt(workedHa,2)} ha (${fmt(pct,0)}%)`,
+    `Área restante: ${fmt(remainingHa,2)} ha`,
+    `Rendimento médio: ${fmt(avgRateHaH,2)} ha/h`,
+    `Hora inicial: ${inicio ? (inicio.toLocaleDateString('pt-BR')+' '+inicio.toLocaleTimeString('pt-BR')) : '—'}`,
+    `Hora final (última atualização): ${ultima ? (ultima.toLocaleDateString('pt-BR')+' '+ultima.toLocaleTimeString('pt-BR')) : '—'}`
+  ];
+  lines.forEach((l,i)=> doc.text(l, 14, y+i*7));
+  doc.save(`trabalho_${job.nome.replace(/[^a-z0-9]+/gi,'_')}_${d.toISOString().slice(0,10)}.pdf`);
+}
+
+// mostra/atualiza a barra de progresso do trabalho ativo (área coberta agora vs área total do talhão)
+function updateJobProgressUI(){
+  const wrap = document.getElementById('jobProgressWrap');
+  const jobAreaHa = window.__bordaduraAreaHa;
+  if(!jobAreaHa || !window.__activeJobMeta){ wrap.style.display = 'none'; return; }
+  wrap.style.display = 'block';
+  document.getElementById('jobProgressName').textContent = `(${window.__activeJobMeta.nome})`;
+  // área real coberta no talhão inteiro (histórico de todas as sessões + a atual), direto da grade —
+  // já vem sem duplicar sobreposição entre sessões diferentes
+  const coveredHa = coveredAreaHa();
+  const pct = Math.min(100, (coveredHa / jobAreaHa) * 100);
+  const remainingHa = Math.max(0, jobAreaHa - coveredHa);
+  document.getElementById('jobProgressFill').style.width = pct+'%';
+  document.getElementById('jobProgressText').textContent = `${fmt(pct,0)}% (${fmt(coveredHa,2)} / ${fmt(jobAreaHa,2)} ha)`;
+  document.getElementById('jobRemainingHa').textContent = fmt(remainingHa,2)+' ha';
+}
+
+/* ======================= ACOMPANHAMENTO AO VIVO ======================= */
+const LIVE_COLLECTION = 'telemetria_live';
+function genMachineId(){
+  return 'maquina-' + Math.random().toString(36).slice(2,8);
+}
+function getMachineId(){
+  const el = document.getElementById('machineIdInput');
+  let v = (el.value || '').trim();
+  if(!v){
+    v = localStorage.getItem('cfg_machineIdInput') || genMachineId();
+    el.value = v;
+    localStorage.setItem('cfg_machineIdInput', v);
+  }
+  return v;
+}
+let lastLiveWriteTime = 0;
+let liveHeartbeatInterval = null;
+const LIVE_HEARTBEAT_MS = 20000; // reenvia o status a cada 20s, mesmo parado, pra cobrir quedas de sinal
+// sem isso, uma pausa (abastecimento/manutenção) que falhe ao sincronizar só tenta de novo
+// na próxima ação manual do operador — o app Rastreamento fica "sem sinal" até lá, mesmo
+// depois do sinal voltar. O heartbeat garante uma nova tentativa periódica automática.
+
+// mantém a tela acesa enquanto a operação está rodando — sem isso o Android pode bloquear a tela
+// e pausar as leituras de GPS no meio do trabalho, cortando a pintura/gravação até o operador destravar
+let wakeLock = null;
+async function acquireWakeLock(){
+  if(!('wakeLock' in navigator)) return;
+  try{ wakeLock = await navigator.wakeLock.request('screen'); }
+  catch(e){ console.warn('Não consegui manter a tela acesa', e); }
+}
+function releaseWakeLock(){
+  if(wakeLock){ wakeLock.release().catch(()=>{}); wakeLock = null; }
+}
+// o wake lock é liberado automaticamente pelo navegador se o app for pra segundo plano;
+// ao voltar (troca de aba/app) com a operação ainda rodando, pede de novo
+document.addEventListener('visibilitychange', ()=>{
+  if(!document.hidden && tracking && !paused) acquireWakeLock();
+});
+function sendLiveHeartbeat(){
+  if(!tracking) return;
+  if(paused){
+    pushLiveStatus('parado', pausedMotivo, pausedSinceISO);
+  } else if(lastPos){
+    pushLivePosition(lastPos.lat, lastPos.lng);
+  } else {
+    pushLiveStatus('ativo');
+  }
+}
+
+// estado de sincronização ao vivo, usado pra alimentar a barra visível de status
+let lastLiveSyncOkAt = null;   // timestamp (ms) da última escrita confirmada com sucesso
+let lastLiveSyncFailAt = null; // timestamp (ms) da última tentativa que falhou (após esgotar as tentativas)
+let lastLiveSyncErrMsg = null; // mensagem/código do erro real da última falha, pra mostrar na UI
+let liveSyncBusy = false;      // true enquanto uma escrita/retry está em andamento
+
+function currentJobPointsForLive(){
+  // Firestore não aceita array-dentro-de-array como valor de campo (erro "invalid-argument").
+  // bordaduraPoints é [[lat,lng],...] (formato do Leaflet) — convertemos pra [{lat,lng},...] só aqui,
+  // pro envio ao vivo. O array original continua intacto pro mapa/local storage.
+  if(!window.__activeJobMeta || !bordaduraPoints || !bordaduraPoints.length) return null;
+  return bordaduraPoints.map(p => ({lat:p[0], lng:p[1]}));
+}
+
+function sleep(ms){ return new Promise(r=>setTimeout(r, ms)); }
+
+// tenta escrever no Firestore com algumas tentativas automáticas antes de desistir.
+// isso cobre quedas curtas de sinal (comuns em área rural) sem exigir ação do operador.
+async function writeLiveDocWithRetry(payload, attempts=3){
+  if(!firebaseOK) return;
+  liveSyncBusy = true;
+  updateLiveSyncUI();
+  let lastErr = null;
+  for(let i=0;i<attempts;i++){
+    try{
+      await withTimeout(db.collection(LIVE_COLLECTION).doc(getMachineId()).set(payload, {merge:true}), 5000);
+      lastLiveSyncOkAt = Date.now();
+      lastLiveSyncFailAt = null;
+      lastLiveSyncErrMsg = null;
+      liveSyncBusy = false;
+      updateLiveSyncUI();
+      return;
+    }catch(e){
+      lastErr = e;
+      console.warn(`Falha ao sincronizar ao vivo (tentativa ${i+1}/${attempts})`, e);
+      if(i < attempts-1) await sleep(1500 * (i+1)); // backoff simples: 1.5s, 3s
+    }
+  }
+  lastLiveSyncFailAt = Date.now();
+  // guarda o código/mensagem real do erro (ex: 'permission-denied', 'timeout', 'unavailable')
+  lastLiveSyncErrMsg = (lastErr && (lastErr.code || lastErr.message)) || 'erro desconhecido';
+  liveSyncBusy = false;
+  updateLiveSyncUI();
+  console.warn('Sincronização ao vivo falhou após todas as tentativas', lastErr);
+}
+
+async function pushLiveStatus(status, paradaMotivo=null, paradaDesdeISO=null){
+  if(!firebaseOK) return;
+  writeLiveDocWithRetry({
+    status,
+    paradaMotivo,
+    paradaDesdeISO,
+    updatedISO: new Date().toISOString(),
+    operador: document.getElementById('operatorInput').value || '—',
+    talhao: document.getElementById('fieldInput').value || '—',
+    fazenda: document.getElementById('farmInput').value || '—',
+    jobNome: window.__activeJobMeta ? window.__activeJobMeta.nome : null,
+    jobAreaHa: window.__bordaduraAreaHa || null,
+    jobPoints: currentJobPointsForLive()
+  });
+}
+
+async function pushLivePosition(lat, lng){
+  if(!firebaseOK) return;
+  const now = Date.now();
+  if(now - lastLiveWriteTime < 4000) return; // não manda a cada leitura de GPS, só a cada ~4s
+  lastLiveWriteTime = now;
+  const w = widthM();
+  const areaHa = (totalDistanceKm * w) / 10;
+  writeLiveDocWithRetry({
+    lat, lng,
+    status: 'ativo',
+    paradaMotivo: null,
+    paradaDesdeISO: null,
+    updatedISO: new Date().toISOString(),
+    operador: document.getElementById('operatorInput').value || '—',
+    talhao: document.getElementById('fieldInput').value || '—',
+    fazenda: document.getElementById('farmInput').value || '—',
+    areaHa, distKm: totalDistanceKm, speedKmh: currentSpeedKmh,
+    jobNome: window.__activeJobMeta ? window.__activeJobMeta.nome : null,
+    jobAreaHa: window.__bordaduraAreaHa || null,
+    jobPoints: currentJobPointsForLive()
+  });
+}
+
+// atualiza a barrinha visível "🛰️ Ao vivo: ..." — só aparece enquanto o operador está rastreando.
+// verde = sincronizado recentemente · amber = sem confirmação há um tempo, mas ainda tentando ·
+// vermelho = falhou após todas as tentativas (provável sinal fraco / sem internet)
+function updateLiveSyncUI(){
+  const bar = document.getElementById('liveSyncBar');
+  const text = document.getElementById('liveSyncText');
+  if(!firebaseOK || !tracking){
+    bar.className = '';
+    return;
+  }
+  bar.className = 'show';
+  const secsOk = lastLiveSyncOkAt ? Math.round((Date.now()-lastLiveSyncOkAt)/1000) : null;
+  if(liveSyncBusy && secsOk===null){
+    bar.classList.add('warn');
+    text.textContent = '🛰️ Ao vivo: sincronizando…';
+  } else if(lastLiveSyncFailAt && (!lastLiveSyncOkAt || lastLiveSyncFailAt > lastLiveSyncOkAt)){
+    const secsFail = Math.round((Date.now()-lastLiveSyncFailAt)/1000);
+    bar.classList.add('fail');
+    text.textContent = `⚠️ Ao vivo: falhou há ${secsFail}s [${lastLiveSyncErrMsg}] — dados locais continuam sendo salvos`;
+  } else if(secsOk!==null && secsOk <= 15){
+    bar.classList.add('ok');
+    text.textContent = `🛰️ Ao vivo: sincronizado (há ${secsOk}s)`;
+  } else if(secsOk!==null){
+    bar.classList.add('warn');
+    text.textContent = `🛰️ Ao vivo: sem confirmação há ${secsOk}s`;
+  } else {
+    bar.classList.add('warn');
+    text.textContent = '🛰️ Ao vivo: aguardando primeira sincronização…';
+  }
+}
+setInterval(updateLiveSyncUI, 1000);
+
+function startTracking(){
+  if(!avisoDadosOperacaoFaltando()) return;
+  if(!navigator.geolocation){ alert('GPS não disponível neste dispositivo.'); return; }
+  tracking = true;
+  path = []; totalDistanceKm = 0; elapsedWorkMs = 0; lastPos = null; startTime = Date.now(); lastTickTime = Date.now();
+  segDistKm = 0; segStartTime = Date.now();
+  measurementBuffer = [];
+  sessionSpeedSamples = [];
+  document.getElementById('speedNote').textContent = `(média a cada ${document.getElementById('intervalInput').value} m)`;
+  document.getElementById('avgCountNote').textContent = `(média de 0/${avgCount()})`;
+  polyline.setLatLngs([]);
+  // se há um trabalho ativo, retoma a grade de cobertura de sessões anteriores (área não volta a zero);
+  // sem trabalho vinculado, cada sessão de rastreamento avulso começa com uma grade própria e vazia
+  if(window.__activeJobMeta) loadJobCoverageGrid(window.__activeJobMeta);
+  else { coverageRef = null; coveredCells = new Set(); }
+  sessionStartCellCount = coveredCells.size;
+  drawCoverageCells(coverageRef, Array.from(coveredCells));
+  paused = false; pausedMotivo = null;
+  document.getElementById('startBtn').style.display='none';
+  document.getElementById('pauseBtn').style.display='block';
+  document.getElementById('resumeBtn').style.display='none';
+  document.getElementById('stopBtn').style.display='block';
+  document.getElementById('paradaBanner').style.display='none';
+  document.getElementById('paradaPicker').style.display='none';
+  document.getElementById('footerBar').style.display='none';
+  const pill = document.getElementById('statusPill');
+  pill.className = 'status-pill active';
+  document.getElementById('statusText').textContent='Em operação';
+
+  watchId = navigator.geolocation.watchPosition(onPosition, onGeoError, {
+    enableHighAccuracy:true, maximumAge:1000, timeout:15000
+  });
+  timerInterval = setInterval(tickTimer, 1000);
+  pushLiveStatus('ativo');
+  acquireWakeLock();
+  if(liveHeartbeatInterval) clearInterval(liveHeartbeatInterval);
+  liveHeartbeatInterval = setInterval(sendLiveHeartbeat, LIVE_HEARTBEAT_MS);
+}
+
+/* ======================= PAUSA COM MOTIVO (abastecimento / manutenção / problema mecânico) ======================= */
+const PARADA_INFO = {
+  abastecimento: {icon:'⛽', label:'Abastecendo', cls:'abastecimento'},
+  manutencao:    {icon:'🔧', label:'Em manutenção', cls:'manutencao'},
+  mecanico:      {icon:'⚠️', label:'Problema mecânico', cls:'mecanico'}
+};
+let paused = false;
+let pausedMotivo = null;
+let pausedSinceISO = null;
+
+function abrirSeletorParada(){
+  document.getElementById('paradaPicker').style.display='block';
+}
+function cancelarSeletorParada(){
+  document.getElementById('paradaPicker').style.display='none';
+}
+
+function pausarOperacao(motivo){
+  if(!tracking) return;
+  paused = true;
+  pausedMotivo = motivo;
+  pausedSinceISO = new Date().toISOString();
+  if(watchId!==null){ navigator.geolocation.clearWatch(watchId); watchId = null; }
+  releaseWakeLock(); // libera a tela durante a parada — não precisa manter acesa parado
+
+  document.getElementById('paradaPicker').style.display='none';
+  document.getElementById('pauseBtn').style.display='none';
+  document.getElementById('resumeBtn').style.display='block';
+
+  const info = PARADA_INFO[motivo];
+  const pill = document.getElementById('statusPill');
+  pill.className = 'status-pill paused';
+  document.getElementById('statusText').textContent = info.label;
+
+  const banner = document.getElementById('paradaBanner');
+  banner.style.display = 'flex';
+  banner.className = 'parada-banner '+info.cls;
+  document.getElementById('paradaIcon').textContent = info.icon;
+  document.getElementById('paradaText').textContent = info.label;
+  document.getElementById('paradaSince').textContent = 'agora';
+
+  pushLiveStatus('parado', motivo, pausedSinceISO);
+  saveActiveSessionState(true);
+}
+
+function retomarOperacao(){
+  if(!tracking || !paused) return;
+  paused = false; pausedMotivo = null; pausedSinceISO = null;
+
+  // fecha o trecho parado sem contar como deslocamento, pra não distorcer a próxima leitura de velocidade
+  segDistKm = 0; segStartTime = Date.now();
+  document.getElementById('progFill').style.width = '0%';
+
+  document.getElementById('paradaBanner').style.display = 'none';
+  document.getElementById('resumeBtn').style.display = 'none';
+  document.getElementById('pauseBtn').style.display = 'block';
+
+  const pill = document.getElementById('statusPill');
+  pill.className = 'status-pill active';
+  document.getElementById('statusText').textContent = 'Em operação';
+
+  watchId = navigator.geolocation.watchPosition(onPosition, onGeoError, {
+    enableHighAccuracy:true, maximumAge:1000, timeout:15000
+  });
+  pushLiveStatus('ativo');
+  acquireWakeLock();
+  saveActiveSessionState(true);
+}
+
+setInterval(()=>{
+  if(!paused || !pausedSinceISO) return;
+  const mins = Math.max(0, Math.round((Date.now() - new Date(pausedSinceISO).getTime())/60000));
+  document.getElementById('paradaSince').textContent = mins < 1 ? 'agora' : (mins < 60 ? `há ${mins} min` : `há ${Math.round(mins/60)}h`);
+}, 1000);
+
+function onGeoError(err){
+  console.warn('GPS erro', err);
+}
+
+function onPosition(pos){
+  const {latitude,longitude,accuracy} = pos.coords;
+  const now = Date.now();
+  if(accuracy && accuracy > MAX_ACCEPT_ACCURACY_M){ return; } // descarta leitura ruim
+
+  // sempre desenha o trajeto no mapa em tempo real, mesmo entre checkpoints
+  polyline.addLatLng([latitude,longitude]);
+  if(!marker){ marker = L.circleMarker([latitude,longitude],{radius:7,color:'#2ECC71',fillColor:'#2ECC71',fillOpacity:1}).addTo(map); }
+  else{ marker.setLatLng([latitude,longitude]); }
+  map.panTo([latitude,longitude]);
+  path.push({lat:latitude,lng:longitude,t:now});
+  pushLivePosition(latitude, longitude);
+
+  if(lastPos){
+    const dKm = haversineKm(lastPos.lat,lastPos.lng,latitude,longitude);
+    segDistKm += dKm;
+
+    // pinta a faixa da largura de trabalho entre o ponto anterior e o atual (feedback visual imediato)
+    const quad = coverageSwathPolygon(lastPos.lat,lastPos.lng,latitude,longitude,widthM());
+    if(quad){
+      L.polygon(quad,{color:'transparent',weight:0,fillColor:'#7CB35C',fillOpacity:.35}).addTo(coverageLayer);
+    }
+    // marca na grade de cobertura (área real, sem duplicar onde já passou) — é essa grade que
+    // alimenta os números de área/rendimento/progresso, não a faixa visual acima
+    markSwathCells(lastPos.lat,lastPos.lng,latitude,longitude,widthM());
+  }
+  lastPos = {lat:latitude,lng:longitude,t:now};
+  saveActiveSessionState();
+
+  // feedback em tempo real do progresso do ciclo (não é o cálculo oficial ainda)
+  const threshold = intervalKm();
+  const segDistM = segDistKm*1000;
+  const intervalM = threshold*1000;
+  const pct = Math.min(100, (segDistM/intervalM)*100);
+  document.getElementById('progFill').style.width = pct+'%';
+  document.getElementById('progText').textContent = `${fmt(segDistM,0)} / ${fmt(intervalM,0)} m`;
+  if(segStartTime !== null){
+    const dtHLive = (now - segStartTime)/3600000;
+    const liveSpeed = dtHLive>0 ? segDistKm/dtHLive : 0;
+    document.getElementById('progLive').textContent = `(velocidade ao vivo: ${fmt(liveSpeed,1)} km/h)`;
+  }
+
+  // só recalcula velocidade/rendimento oficiais quando o deslocamento atinge o intervalo configurado
+  if(segDistKm >= threshold && segStartTime !== null){
+    const dtH = (now - segStartTime) / 3600000;
+    const speedKmh = dtH > 0 ? segDistKm/dtH : 0;
+    totalDistanceKm += segDistKm;
+    if(speedKmh >= MIN_MOVE_SPEED_KMH){ elapsedWorkMs += (now - segStartTime); }
+
+    // guarda essa medição individual e calcula a média das últimas N (suaviza trechos mais rápidos/mais lentos)
+    const N = avgCount();
+    sessionSpeedSamples.push(speedKmh);
+    measurementBuffer.push(speedKmh);
+    if(measurementBuffer.length > N) measurementBuffer.shift();
+    const avgSpeedKmh = measurementBuffer.reduce((a,b)=>a+b,0) / measurementBuffer.length;
+    currentSpeedKmh = avgSpeedKmh;
+    document.getElementById('avgCountNote').textContent = `(média de ${measurementBuffer.length}/${N})`;
+
+    segDistKm = 0;
+    segStartTime = now;
+    document.getElementById('progFill').style.width = '0%';
+    document.getElementById('progText').textContent = `0 / ${fmt(intervalM,0)} m`;
+    renderReadouts();
+  }
+}
+
+function tickTimer(){
+  document.getElementById('timeVal').textContent = fmtTime(Date.now()-startTime);
+}
+
+function renderReadouts(){
+  const w = widthM();
+  // área real coberta NESTA sessão (só as células que ainda não estavam marcadas ao iniciar) —
+  // sobreposição com trechos já feitos (retrabalho, manobra, passada repetida) não conta de novo
+  const areaHa = ((coveredCells.size - sessionStartCellCount) * CELL_SIZE_M * CELL_SIZE_M) / 10000;
+  const instRateHaH = (currentSpeedKmh * w) / 10;
+  const workHours = elapsedWorkMs/3600000;
+  const avgRateHaH = workHours>0 ? areaHa/workHours : 0;
+
+  document.getElementById('speedVal').innerHTML = fmt(currentSpeedKmh,1)+'<span class="readout-unit">km/h</span>';
+  document.getElementById('instRate').innerHTML = fmt(instRateHaH,2)+'<span class="readout-unit">ha/h</span>';
+  document.getElementById('avgRate').innerHTML = fmt(avgRateHaH,2)+'<span class="readout-unit">ha/h</span>';
+  document.getElementById('areaVal').textContent = fmt(areaHa,2)+' ha';
+  document.getElementById('distVal').textContent = fmt(totalDistanceKm,2)+' km';
+  updateJobProgressUI();
+}
+
+function stopTracking(){
+  tracking = false;
+  paused = false; pausedMotivo = null; pausedSinceISO = null;
+  if(watchId!==null) navigator.geolocation.clearWatch(watchId);
+  releaseWakeLock();
+  clearInterval(timerInterval);
+  if(liveHeartbeatInterval){ clearInterval(liveHeartbeatInterval); liveHeartbeatInterval = null; }
+  clearActiveSessionState();
+  document.getElementById('paradaBanner').style.display = 'none';
+  document.getElementById('paradaPicker').style.display = 'none';
+  document.getElementById('pauseBtn').style.display = 'none';
+  document.getElementById('resumeBtn').style.display = 'none';
+  pushLiveStatus('parado', null, null);
+
+  // fecha o trecho parcial (menor que o intervalo) que ainda não tinha sido computado
+  if(segDistKm > 0 && segStartTime !== null){
+    const now = Date.now();
+    const dtH = (now - segStartTime) / 3600000;
+    const speedKmh = dtH > 0 ? segDistKm/dtH : 0;
+    totalDistanceKm += segDistKm;
+    if(speedKmh >= MIN_MOVE_SPEED_KMH){ elapsedWorkMs += (now - segStartTime); sessionSpeedSamples.push(speedKmh); }
+    segDistKm = 0;
+  }
+  document.getElementById('startBtn').style.display='block';
+  document.getElementById('stopBtn').style.display='none';
+  document.getElementById('statusPill').className = 'status-pill';
+  document.getElementById('statusText').textContent='Parado';
+  lastLiveSyncOkAt = null; lastLiveSyncFailAt = null;
+  updateLiveSyncUI();
+
+  const session = buildSessionSummary();
+  if(session.areaHa > 0 || session.distKm > 0){
+    saveSession(session);
+    registerSessionToActiveJob(session);
+    document.getElementById('footerBar').style.display='flex';
+    window.__lastSession = session;
+  }
+}
+
+function buildSessionSummary(){
+  const w = widthM();
+  // área real coberta nesta sessão (grade), não distância×largura — não conta 2x onde já tinha passado
+  const areaHa = ((coveredCells.size - sessionStartCellCount) * CELL_SIZE_M * CELL_SIZE_M) / 10000;
+  const workHours = elapsedWorkMs/3600000;
+  const totalHours = (Date.now()-startTime)/3600000;
+  const avgRateHaH = workHours>0 ? areaHa/workHours : 0;
+  const avgSpeed = workHours>0 ? totalDistanceKm/workHours : 0;
+  const speedMin = sessionSpeedSamples.length ? Math.min(...sessionSpeedSamples) : 0;
+  const speedMax = sessionSpeedSamples.length ? Math.max(...sessionSpeedSamples) : 0;
+  return {
+    _localId: genLocalId(),
+    dataISO: new Date().toISOString(),
+    inicioISO: new Date(startTime).toISOString(),
+    operador: document.getElementById('operatorInput').value || '—',
+    talhao: document.getElementById('fieldInput').value || '—',
+    fazenda: document.getElementById('farmInput').value || '—',
+    trabalhoId: window.__activeJobMeta ? window.__activeJobMeta.id : null,
+    larguraM: w,
+    distKm: totalDistanceKm,
+    areaHa: areaHa,
+    tempoTotalMin: totalHours*60,
+    tempoTrabalhoMin: workHours*60,
+    rendimentoMedioHaH: avgRateHaH,
+    velocidadeMediaKmH: avgSpeed,
+    velocidadeMinKmH: speedMin,
+    velocidadeMaxKmH: speedMax,
+    numMedicoes: sessionSpeedSamples.length,
+    trajeto: path.filter((_,i)=> i % 3 === 0).map(p=>({lat:p.lat,lng:p.lng})) // decimado p/ economizar espaço
+  };
+}
+
+/* ======================= PERSISTENCE ======================= */
+/* ======================= SESSÃO ATIVA — sobrevive a fechar/reabrir o app =======================
+   Sem isso, fechar o app (trocar de tela, o Android matar o processo em segundo plano, etc.)
+   perdia todo o progresso da operação em andamento. Aqui salvamos um retrato do estado
+   atual da sessão em andamento e, ao abrir o app de novo, restauramos tudo: trajeto pintado
+   no mapa, distância, área, tempo trabalhado e o status de pausa — como se nunca tivesse fechado. */
+const ACTIVE_SESSION_KEY = 'active_session_v1';
+let lastSessionSaveTime = 0;
+const SESSION_SAVE_THROTTLE_MS = 3000; // não salva a cada leitura de GPS, só a cada ~3s
+
+function saveActiveSessionState(force=false){
+  if(!tracking) return;
+  const now = Date.now();
+  if(!force && (now - lastSessionSaveTime) < SESSION_SAVE_THROTTLE_MS) return;
+  lastSessionSaveTime = now;
+  try{
+    const snapshot = {
+      path, totalDistanceKm, elapsedWorkMs, startTime, segDistKm, segStartTime,
+      measurementBuffer, sessionSpeedSamples, currentSpeedKmh, lastPos,
+      paused, pausedMotivo, pausedSinceISO,
+      jobMeta: window.__activeJobMeta || null
+    };
+    localStorage.setItem(ACTIVE_SESSION_KEY, JSON.stringify(snapshot));
+  }catch(e){ console.warn('Não foi possível salvar a sessão ativa', e); }
+}
+
+function clearActiveSessionState(){
+  localStorage.removeItem(ACTIVE_SESSION_KEY);
+}
+
+// redesenha no mapa tudo que já foi percorrido, incluindo a faixa pintada (largura de trabalho)
+function redrawPathAndCoverage(){
+  const latlngs = path.map(p=>[p.lat,p.lng]);
+  polyline.setLatLngs(latlngs);
+  // parte da grade já confirmada (sessões anteriores completas) e replica o trajeto desta sessão
+  // interrompida por cima, pra reconstruir a mesma área coberta que tinha antes de fechar o app
+  if(window.__activeJobMeta) loadJobCoverageGrid(window.__activeJobMeta);
+  else { coverageRef = null; coveredCells = new Set(); }
+  sessionStartCellCount = coveredCells.size;
+  const w = widthM();
+  for(let i=1;i<path.length;i++) markSwathCells(path[i-1].lat,path[i-1].lng,path[i].lat,path[i].lng,w);
+  drawCoverageCells(coverageRef, Array.from(coveredCells));
+  if(path.length){
+    const last = path[path.length-1];
+    if(!marker){ marker = L.circleMarker([last.lat,last.lng],{radius:7,color:'#2ECC71',fillColor:'#2ECC71',fillOpacity:1}).addTo(map); }
+    else{ marker.setLatLng([last.lat,last.lng]); }
+    map.setView([last.lat,last.lng], Math.max(map.getZoom(),16));
+  }
+}
+
+// ao abrir o app, verifica se havia uma operação em andamento e retoma exatamente de onde parou
+function restoreActiveSessionState(){
+  let raw;
+  try{ raw = localStorage.getItem(ACTIVE_SESSION_KEY); }catch(e){ return; }
+  if(!raw) return;
+  let s;
+  try{ s = JSON.parse(raw); }catch(e){ return; }
+  if(!s || !Array.isArray(s.path)) return;
+
+  tracking = true;
+  path = s.path || [];
+  totalDistanceKm = s.totalDistanceKm || 0;
+  elapsedWorkMs = s.elapsedWorkMs || 0;
+  startTime = s.startTime || Date.now();
+  segDistKm = s.segDistKm || 0;
+  segStartTime = s.segStartTime || Date.now();
+  measurementBuffer = s.measurementBuffer || [];
+  sessionSpeedSamples = s.sessionSpeedSamples || [];
+  currentSpeedKmh = s.currentSpeedKmh || 0;
+  lastPos = s.lastPos || null;
+  paused = !!s.paused;
+  pausedMotivo = s.pausedMotivo || null;
+  pausedSinceISO = s.pausedSinceISO || null;
+
+  redrawPathAndCoverage();
+  renderReadouts();
+  document.getElementById('timeVal').textContent = fmtTime(Date.now()-startTime);
+  document.getElementById('speedNote').textContent = `(média a cada ${document.getElementById('intervalInput').value} m)`;
+  document.getElementById('avgCountNote').textContent = `(média de ${measurementBuffer.length}/${avgCount()})`;
+
+  document.getElementById('startBtn').style.display='none';
+  document.getElementById('stopBtn').style.display='block';
+  document.getElementById('footerBar').style.display='none';
+
+  if(paused){
+    const info = PARADA_INFO[pausedMotivo] || PARADA_INFO.abastecimento;
+    document.getElementById('pauseBtn').style.display='none';
+    document.getElementById('resumeBtn').style.display='block';
+    document.getElementById('statusPill').className = 'status-pill paused';
+    document.getElementById('statusText').textContent = info.label;
+    const banner = document.getElementById('paradaBanner');
+    banner.style.display = 'flex';
+    banner.className = 'parada-banner '+info.cls;
+    document.getElementById('paradaIcon').textContent = info.icon;
+    document.getElementById('paradaText').textContent = info.label;
+  } else {
+    document.getElementById('pauseBtn').style.display='block';
+    document.getElementById('resumeBtn').style.display='none';
+    document.getElementById('statusPill').className = 'status-pill active';
+    document.getElementById('statusText').textContent = 'Em operação';
+    watchId = navigator.geolocation.watchPosition(onPosition, onGeoError, {
+      enableHighAccuracy:true, maximumAge:1000, timeout:15000
+    });
+    acquireWakeLock();
+  }
+  timerInterval = setInterval(tickTimer, 1000);
+  pushLiveStatus(paused ? 'parado' : 'ativo', pausedMotivo, pausedSinceISO);
+  if(liveHeartbeatInterval) clearInterval(liveHeartbeatInterval);
+  liveHeartbeatInterval = setInterval(sendLiveHeartbeat, LIVE_HEARTBEAT_MS);
+}
+
+// salva também ao esconder/fechar o app (além do salvamento periódico), pra não perder
+// os últimos segundos de progresso caso o app seja fechado logo após uma atualização.
+document.addEventListener('visibilitychange', ()=>{ if(document.hidden) saveActiveSessionState(true); });
+window.addEventListener('pagehide', ()=> saveActiveSessionState(true));
+
+function genLocalId(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
+function localKey(){ return 'telemetria_sessoes_local'; }
+function saveLocal(session){
+  const list = JSON.parse(localStorage.getItem(localKey())||'[]');
+  list.unshift(session);
+  localStorage.setItem(localKey(), JSON.stringify(list.slice(0,100)));
+}
+async function saveSession(session){
+  saveLocal(session);
+  renderHistory(); // mostra na hora, usando o que já está salvo localmente
+  if(firebaseOK){
+    // sincroniza em segundo plano — nunca trava a interface, mesmo se a rede/credenciais falharem
+    withTimeout(db.collection(COLLECTION).add(session), 8000)
+      .then(docRef=>{
+        // guarda o id do Firestore junto ao registro local, pra permitir apagar depois
+        const list = JSON.parse(localStorage.getItem(localKey())||'[]');
+        const idx = list.findIndex(s=> s._localId === session._localId);
+        if(idx > -1){ list[idx]._fsId = docRef.id; localStorage.setItem(localKey(), JSON.stringify(list)); }
+      })
+      .catch((e)=> console.warn('Falha ao sincronizar com Firebase', e));
+  }
+}
+
+async function deleteSession(session){
+  // remove do armazenamento local — usa _localId quando disponível;
+  // registros antigos (salvos antes desse recurso) não têm _localId, então usa dataISO como identificador (é único até o milissegundo)
+  const list = JSON.parse(localStorage.getItem(localKey())||'[]');
+  const filtered = list.filter(s=>{
+    if(session._localId && s._localId) return s._localId !== session._localId;
+    return s.dataISO !== session.dataISO;
+  });
+  localStorage.setItem(localKey(), JSON.stringify(filtered));
+
+  // remove do Firestore, se esse registro já tinha sido sincronizado
+  if(firebaseOK){
+    try{
+      let fsId = session._fsId;
+      if(!fsId){
+        // registro antigo sem id salvo localmente: procura no Firestore pelo dataISO
+        const snap = await withTimeout(db.collection(COLLECTION).where('dataISO','==',session.dataISO).limit(1).get(), 8000);
+        if(!snap.empty) fsId = snap.docs[0].id;
+      }
+      if(fsId) await withTimeout(db.collection(COLLECTION).doc(fsId).delete(), 8000);
+    }catch(e){ console.warn('Falha ao apagar no Firebase', e); }
+  }
+  renderHistory();
+}
+
+function withTimeout(promise, ms){
+  return Promise.race([
+    promise,
+    new Promise((_,reject)=> setTimeout(()=> reject(new Error('timeout')), ms))
+  ]);
+}
+
+async function renderHistory(){
+  const list = document.getElementById('histList');
+  const localSessions = JSON.parse(localStorage.getItem(localKey())||'[]');
+  paintHistory(localSessions); // sempre pinta o que tem local primeiro, instantâneo
+
+  if(firebaseOK){
+    try{
+      const snap = await withTimeout(db.collection(COLLECTION).orderBy('dataISO','desc').limit(50).get(), 8000);
+      const remoteSessions = snap.docs.map(d=> ({...d.data(), _fsId: d.id}));
+      if(remoteSessions.length){ paintHistory(remoteSessions); }
+    }catch(e){ /* mantém a lista local em caso de falha ou timeout */ }
+  }
+}
+
+function paintHistory(sessions){
+  const list = document.getElementById('histList');
+  window.__histSessions = sessions; // guarda a lista atual pra localizar a sessão no clique de apagar
+  if(sessions.length===0){
+    list.innerHTML = '<div class="empty-state">Nenhuma sessão registrada ainda.</div>';
+    return;
+  }
+  list.innerHTML = sessions.map((s,i)=>{
+    const d = new Date(s.dataISO);
+    return `<div class="session-card">
+      <div class="date">
+        <span>${d.toLocaleDateString('pt-BR')} ${d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})} — ${s.talhao||''} ${s.fazenda?('· '+s.fazenda):''}</span>
+        <button class="del-session-btn" data-idx="${i}" title="Apagar registro">🗑️</button>
+      </div>
+      <div class="session-metrics">
+        <div>Área<b>${fmt(s.areaHa,2)} ha</b></div>
+        <div>Rendimento<b>${fmt(s.rendimentoMedioHaH,2)} ha/h</b></div>
+        <div>Distância<b>${fmt(s.distKm,2)} km</b></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+document.getElementById('histList').addEventListener('click', async (e)=>{
+  const btn = e.target.closest('.del-session-btn');
+  if(!btn) return;
+  const session = (window.__histSessions||[])[Number(btn.dataset.idx)];
+  if(!session) return;
+  if(!confirm('Apagar este registro do histórico? Essa ação não pode ser desfeita.')) return;
+  btn.disabled = true; btn.textContent = '⏳';
+  await deleteSession(session);
+});
+
+/* ======================= EXPORT ======================= */
+document.getElementById('pdfBtn').addEventListener('click', async ()=>{
+  const s = window.__lastSession; if(!s) return;
+  const btn = document.getElementById('pdfBtn');
+  const originalLabel = btn.textContent;
+  btn.textContent = '⏳ Gerando...'; btn.disabled = true;
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  const d = new Date(s.dataISO);
+  doc.setFontSize(16); doc.text('Relatório de Telemetria', 14, 18);
+
+  let y = 28;
+  // captura o mapa (trajeto + talhão importado, se houver) e insere no PDF
+  try{
+    // enquadra o mapa pra mostrar o talhão importado E o trajeto percorrido juntos
+    const boundsPts = [];
+    if(polyline && polyline.getLatLngs().length) boundsPts.push(...polyline.getLatLngs());
+    if(importedLayer){
+      importedLayer.eachLayer(layer=>{
+        if(typeof layer.getLatLng === 'function' && !layer.getLatLngs){ boundsPts.push(layer.getLatLng()); }
+        else if(typeof layer.getLatLngs === 'function'){
+          const ll = layer.getLatLngs();
+          boundsPts.push(...(Array.isArray(ll[0]) ? ll.flat(2) : ll));
+        }
+      });
+    }
+    if(boundsPts.length){
+      map.invalidateSize({animate:false}); // garante que o mapa conhece o tamanho real antes de calcular o enquadramento
+      map.fitBounds(boundsPts, {padding:[24,24], animate:false});
+      await waitForTilesToLoad(); // só tira o print depois que os tiles do novo enquadramento carregarem
+    }
+    // espera 2 frames de repaint pra garantir que o pan/zoom do fitBounds já foi aplicado visualmente
+    await new Promise(r => requestAnimationFrame(()=> requestAnimationFrame(r)));
+    const mapEl = document.getElementById('map');
+    const changedTransforms = flatten3DTransforms(mapEl); // 3D->2D só durante a captura
+    let canvas;
+    try{
+      canvas = await html2canvas(mapEl, {useCORS:true, scale:2});
+    } finally {
+      restore3DTransforms(changedTransforms); // devolve o mapa ao normal (interativo) depois do print
+    }
+    const imgData = canvas.toDataURL('image/png');
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const imgWidth = pageWidth - 28; // margem de 14mm de cada lado
+    const imgHeight = imgWidth * (canvas.height/canvas.width);
+    doc.addImage(imgData, 'PNG', 14, y, imgWidth, imgHeight);
+    y += imgHeight + 10;
+  }catch(e){ console.warn('Não consegui capturar o mapa no PDF', e); }
+
+  doc.setFontSize(10);
+  const lines = [
+    `Data: ${d.toLocaleDateString('pt-BR')}`,
+    `Hora inicial: ${s.inicioISO ? new Date(s.inicioISO).toLocaleTimeString('pt-BR') : '—'}   Hora final: ${d.toLocaleTimeString('pt-BR')}`,
+    `Operador: ${s.operador}`,
+    `Fazenda: ${s.fazenda}   Talhão: ${s.talhao}`,
+    `Largura de trabalho: ${fmt(s.larguraM,1)} m`,
+    `Distância percorrida: ${fmt(s.distKm,2)} km`,
+    `Área trabalhada: ${fmt(s.areaHa,2)} ha`,
+    `Tempo total: ${fmtMinSec(s.tempoTotalMin)}   Tempo efetivo: ${fmtMinSec(s.tempoTrabalhoMin)}`,
+    `Velocidade mais lenta: ${fmt(s.velocidadeMinKmH,1)} km/h`,
+    `Velocidade mais rápida: ${fmt(s.velocidadeMaxKmH,1)} km/h`,
+    `Velocidade média geral: ${fmt(s.velocidadeMediaKmH,1)} km/h`,
+    `Rendimento médio: ${fmt(s.rendimentoMedioHaH,2)} ha/h`
+  ];
+  lines.forEach((l,i)=> doc.text(l, 14, y+i*7));
+  doc.save(`telemetria_${d.toISOString().slice(0,10)}.pdf`);
+
+  btn.textContent = originalLabel; btn.disabled = false;
+});
+
+document.getElementById('waBtn').addEventListener('click',()=>{
+  const s = window.__lastSession; if(!s) return;
+  const dFim = new Date(s.dataISO);
+  const horaIni = s.inicioISO ? new Date(s.inicioISO).toLocaleTimeString('pt-BR') : '—';
+  const txt = `🚜 Relatório de Telemetria\n`+
+    `Talhão: ${s.talhao} — ${s.fazenda}\n`+
+    `Início: ${horaIni}   Fim: ${dFim.toLocaleTimeString('pt-BR')}\n`+
+    `Área: ${fmt(s.areaHa,2)} ha\n`+
+    `Rendimento médio: ${fmt(s.rendimentoMedioHaH,2)} ha/h\n`+
+    `Distância: ${fmt(s.distKm,2)} km\n`+
+    `Velocidade mais lenta: ${fmt(s.velocidadeMinKmH,1)} km/h\n`+
+    `Velocidade mais rápida: ${fmt(s.velocidadeMaxKmH,1)} km/h\n`+
+    `Velocidade média geral: ${fmt(s.velocidadeMediaKmH,1)} km/h`;
+  window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank');
+});
+
+/* ======================= UI WIRING ======================= */
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
+    btn.classList.add('on');
+    document.getElementById(btn.dataset.view).classList.add('on');
+    if(btn.dataset.view==='histView') renderHistory();
+    if(btn.dataset.view==='jobsView') renderJobsList();
+  });
+});
+document.getElementById('startBtn').addEventListener('click',startTracking);
+document.getElementById('stopBtn').addEventListener('click',()=>{
+  // só pergunta se já tem progresso real na sessão — evita incomodar quem clicou e parou na hora
+  if(totalDistanceKm > 0.01 || segDistKm > 0.01){
+    if(!confirm('Encerrar a operação? Isso fecha a sessão atual e registra o trabalho feito até agora.')) return;
+  }
+  stopTracking();
+});
+document.getElementById('pauseBtn').addEventListener('click',abrirSeletorParada);
+document.getElementById('cancelParadaBtn').addEventListener('click',cancelarSeletorParada);
+document.getElementById('resumeBtn').addEventListener('click',retomarOperacao);
+document.querySelectorAll('.btn-parada').forEach(btn=>{
+  btn.addEventListener('click', ()=>pausarOperacao(btn.dataset.motivo));
+});
+
+// persist config fields
+['machineIdInput','widthInput','intervalInput','avgCountInput','operatorInput','fieldInput','farmInput'].forEach(id=>{
+  const el = document.getElementById(id);
+  const saved = localStorage.getItem('cfg_'+id);
+  if(saved!==null) el.value = saved;
+  el.addEventListener('change',()=> localStorage.setItem('cfg_'+id, el.value));
+});
+// se ainda não existe um ID de máquina salvo (primeiro uso), gera um automaticamente
+if(!document.getElementById('machineIdInput').value.trim()){
+  getMachineId();
+}
+
+/* ======================= CÓDIGO DA MÁQUINA — trava contra troca acidental ======================= */
+// o código só deve mudar por ação explícita e consciente do usuário (botão "alterar" + confirmação).
+// isso evita que uma limpeza de dados do app gere um código novo sem o usuário perceber, o que
+// quebraria silenciosamente o vínculo com o app Rastreamento (que fica escutando o código antigo).
+function refreshMachineCodeDisplay(){
+  const code = document.getElementById('machineIdInput').value.trim() || '—';
+  document.getElementById('machineCodeDisplay').textContent = code;
+}
+refreshMachineCodeDisplay();
+document.getElementById('machineIdInput').addEventListener('change', refreshMachineCodeDisplay);
+
+document.getElementById('unlockMachineIdBtn').addEventListener('click', ()=>{
+  const input = document.getElementById('machineIdInput');
+  if(input.hasAttribute('readonly')){
+    const ok = confirm('Atenção: alterar o código desta máquina vai quebrar o vínculo com o app Rastreamento — quem estiver acompanhando precisará adicionar o novo código lá. Deseja mesmo alterar?');
+    if(!ok) return;
+    input.removeAttribute('readonly');
+    input.focus();
+    document.getElementById('unlockMachineIdBtn').textContent = '🔒 travar';
+  } else {
+    const v = input.value.trim();
+    if(v){
+      localStorage.setItem('cfg_machineIdInput', v);
+      refreshMachineCodeDisplay();
+    }
+    input.setAttribute('readonly','');
+    document.getElementById('unlockMachineIdBtn').textContent = '🔓 alterar';
+  }
+});
+
+document.getElementById('copyMachineCodeBtn').addEventListener('click', async ()=>{
+  const code = document.getElementById('machineIdInput').value.trim();
+  if(!code) return;
+  const btn = document.getElementById('copyMachineCodeBtn');
+  try{
+    await navigator.clipboard.writeText(code);
+    btn.textContent = '✅ copiado';
+  }catch(e){
+    btn.textContent = '⚠️ copie manualmente';
+  }
+  setTimeout(()=>{ btn.textContent = '📋 copiar'; }, 2000);
+});
+
+// aviso se faltar operador/talhão/fazenda ao iniciar a operação — esses dados também
+// aparecem no app Rastreamento e ficam mais fáceis de reconhecer no campo.
+function avisoDadosOperacaoFaltando(){
+  const faltando = [];
+  if(!document.getElementById('operatorInput').value.trim()) faltando.push('Operador');
+  if(!document.getElementById('fieldInput').value.trim()) faltando.push('Talhão');
+  if(!document.getElementById('farmInput').value.trim()) faltando.push('Fazenda');
+  if(faltando.length){
+    return confirm('Os seguintes campos estão vazios: '+faltando.join(', ')+'. Eles aparecem no app Rastreamento e ajudam a identificar a operação. Deseja continuar mesmo assim?');
+  }
+  return true;
+}
+
+document.getElementById('syncNote').textContent = firebaseOK
+  ? 'Conectado ao Firebase — sessões sincronizam entre dispositivos.'
+  : 'Sem configuração do Firebase — sessões ficam salvas só neste aparelho. Edite firebaseConfig no código para sincronizar.';
+document.getElementById('syncNote').classList.toggle('err', !firebaseOK);
+
+initMap();
+loadKmlFromStorage();
+loadBordaduraFromStorage();
+renderHistory();
+restoreActiveSessionState(); // retoma uma operação em andamento se o app foi fechado no meio dela
+
+// Service Worker real (arquivo separado sw.js — necessário: navegadores não aceitam
+// registrar Service Worker via blob:/data: por segurança, só via arquivo mesmo domínio).
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('./sw.js').catch(()=>{});
+}
+
+// Botão de instalação (Android/desktop Chrome)
+let deferredPrompt = null;
+const installBtn = document.getElementById('installBtn');
+window.addEventListener('beforeinstallprompt', (e)=>{
+  e.preventDefault();
+  deferredPrompt = e;
+  if(installBtn) installBtn.style.display = 'block';
+});
+if(installBtn){
+  installBtn.addEventListener('click', async ()=>{
+    if(!deferredPrompt) return;
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    installBtn.style.display = 'none';
+  });
+}
+window.addEventListener('appinstalled', ()=>{ if(installBtn) installBtn.style.display='none'; });
+// iOS não dispara beforeinstallprompt — mostra instrução de "Adicionar à Tela de Início"
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+const isStandalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+if(isIOS && !isStandalone && installBtn){
+  installBtn.textContent = '📲 Instalar: toque em Compartilhar → Adicionar à Tela de Início';
+  installBtn.style.display = 'block';
+  installBtn.style.fontSize = '11px';
+  installBtn.onclick = null;
+}
+</script>
+</body>
+</html>
